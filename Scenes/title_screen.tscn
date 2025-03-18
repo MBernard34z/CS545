@@ -1,6 +1,232 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvh4tf5rbipfx"]
+[gd_scene load_steps=52 format=3 uid="uid://bvh4tf5rbipfx"]
 
 [ext_resource type="Script" uid="uid://raocbm7w4f2d" path="res://Scripts/title_screen.gd" id="1_klylv"]
+[ext_resource type="FontFile" uid="uid://nsqxl2g376m6" path="res://Assets/Fonts/Future.ttf" id="2_p3fck"]
+[ext_resource type="Texture2D" uid="uid://c5kd475hwnkyy" path="res://Assets/Player/F1/Character1F_3_idle_0.png" id="3_2aetq"]
+[ext_resource type="Texture2D" uid="uid://dqmgxabjtnoef" path="res://Assets/Player/F1/Character1F_3_idle_1.png" id="4_4j2le"]
+[ext_resource type="Texture2D" uid="uid://cqxeggd1wg2c0" path="res://Assets/Player/F1/Character1F_3_idle_2.png" id="5_q71se"]
+[ext_resource type="Texture2D" uid="uid://bfn1lrny74hod" path="res://Assets/Player/F1/Character1F_3_idle_3.png" id="6_s0wjx"]
+[ext_resource type="Texture2D" uid="uid://bex3twh3vgocq" path="res://Assets/Player/F1/Character1F_3_idle_4.png" id="7_3gx0d"]
+[ext_resource type="Texture2D" uid="uid://b363jfvivc4c3" path="res://Assets/Player/F1/Character1F_3_idle_5.png" id="8_6xkn5"]
+[ext_resource type="Texture2D" uid="uid://drq4ofe2368bn" path="res://Assets/Player/F1/Character1F_3_idle_6.png" id="9_6il8m"]
+[ext_resource type="Texture2D" uid="uid://b2i8gc5unx522" path="res://Assets/Player/F1/Character1F_3_idle_7.png" id="10_4nb1b"]
+[ext_resource type="Texture2D" uid="uid://bn6d6k5ga3xsd" path="res://Assets/Player/F2/Character2F_2_idle_0.png" id="11_rrfaw"]
+[ext_resource type="Texture2D" uid="uid://bp0xtevriaqmj" path="res://Assets/Player/F2/Character2F_2_idle_1.png" id="12_tyccn"]
+[ext_resource type="Texture2D" uid="uid://bnfjiao72dwt" path="res://Assets/Player/F2/Character2F_2_idle_2.png" id="13_qdha3"]
+[ext_resource type="Texture2D" uid="uid://5qybhxen71on" path="res://Assets/Player/F2/Character2F_2_idle_3.png" id="14_3mvch"]
+[ext_resource type="Texture2D" uid="uid://uwar1w17mmvj" path="res://Assets/Player/F2/Character2F_2_idle_4.png" id="15_ddirp"]
+[ext_resource type="Texture2D" uid="uid://1d5mmxyxhnin" path="res://Assets/Player/F2/Character2F_2_idle_5.png" id="16_0ljym"]
+[ext_resource type="Texture2D" uid="uid://qu82anog61u3" path="res://Assets/Player/F2/Character2F_2_idle_6.png" id="17_gyabl"]
+[ext_resource type="Texture2D" uid="uid://bq6m8ehutu1by" path="res://Assets/Player/F2/Character2F_2_idle_7.png" id="18_kvrr6"]
+[ext_resource type="Texture2D" uid="uid://b57woqjith7vg" path="res://Assets/Player/F3/Character3F_1_idle_0.png" id="19_xwnc2"]
+[ext_resource type="Texture2D" uid="uid://048klo0q1pv1" path="res://Assets/Player/F3/Character3F_1_idle_1.png" id="20_6epin"]
+[ext_resource type="Texture2D" uid="uid://brjgixabkbmov" path="res://Assets/Player/F3/Character3F_1_idle_2.png" id="21_85pce"]
+[ext_resource type="Texture2D" uid="uid://dprtsnj0wfeqh" path="res://Assets/Player/F3/Character3F_1_idle_3.png" id="22_ggxsd"]
+[ext_resource type="Texture2D" uid="uid://c6774v03nf80u" path="res://Assets/Player/F3/Character3F_1_idle_4.png" id="23_0mn3l"]
+[ext_resource type="Texture2D" uid="uid://btsfun4i4ea5h" path="res://Assets/Player/F3/Character3F_1_idle_5.png" id="24_smltx"]
+[ext_resource type="Texture2D" uid="uid://b0846ltxhrt4s" path="res://Assets/Player/F3/Character3F_1_idle_6.png" id="25_5oaq1"]
+[ext_resource type="Texture2D" uid="uid://bksqwkeu6dnw0" path="res://Assets/Player/F3/Character3F_1_idle_7.png" id="26_aq6ve"]
+[ext_resource type="Texture2D" uid="uid://by2a61r08ut8c" path="res://Assets/Player/M1/Character1M_3_idle_0.png" id="27_j4mpa"]
+[ext_resource type="Texture2D" uid="uid://bkh04w42sdm01" path="res://Assets/Player/M1/Character1M_3_idle_1.png" id="28_e6bqf"]
+[ext_resource type="Texture2D" uid="uid://db3a2dghfhaex" path="res://Assets/Player/M1/Character1M_3_idle_2.png" id="29_c57yx"]
+[ext_resource type="Texture2D" uid="uid://c8s24ti7eklr4" path="res://Assets/Player/M1/Character1M_3_idle_3.png" id="30_ifk80"]
+[ext_resource type="Texture2D" uid="uid://c0r3d0j1cjank" path="res://Assets/Player/M1/Character1M_3_idle_4.png" id="31_tmor8"]
+[ext_resource type="Texture2D" uid="uid://cxfy2k3h1xwfl" path="res://Assets/Player/M1/Character1M_3_idle_5.png" id="32_iandf"]
+[ext_resource type="Texture2D" uid="uid://6uyttmcw2t4c" path="res://Assets/Player/M1/Character1M_3_idle_6.png" id="33_b3mwg"]
+[ext_resource type="Texture2D" uid="uid://cynqqf6b5u5jt" path="res://Assets/Player/M1/Character1M_3_idle_7.png" id="34_wc0cj"]
+[ext_resource type="Texture2D" uid="uid://c60xri6s0nwfw" path="res://Assets/Player/M2/Character2M_2_idle_0.png" id="35_shkjk"]
+[ext_resource type="Texture2D" uid="uid://cgjta11gtr0lw" path="res://Assets/Player/M2/Character2M_2_idle_1.png" id="36_flhds"]
+[ext_resource type="Texture2D" uid="uid://dj2r8cfdicqpu" path="res://Assets/Player/M2/Character2M_2_idle_2.png" id="37_bcgaj"]
+[ext_resource type="Texture2D" uid="uid://c6e64fcby5xh2" path="res://Assets/Player/M2/Character2M_2_idle_3.png" id="38_j5kd0"]
+[ext_resource type="Texture2D" uid="uid://de8h8whf0tpke" path="res://Assets/Player/M2/Character2M_2_idle_4.png" id="39_0d2da"]
+[ext_resource type="Texture2D" uid="uid://mwhl6lofno6f" path="res://Assets/Player/M2/Character2M_2_idle_5.png" id="40_58ebe"]
+[ext_resource type="Texture2D" uid="uid://d0ma7rg1lra1d" path="res://Assets/Player/M2/Character2M_2_idle_6.png" id="41_gkusk"]
+[ext_resource type="Texture2D" uid="uid://d3b6fjsyu26t" path="res://Assets/Player/M2/Character2M_2_idle_7.png" id="42_py8vl"]
+[ext_resource type="Texture2D" uid="uid://uunjhqovkny3" path="res://Assets/Player/M3/Character3M_1_idle_0.png" id="43_yir7d"]
+[ext_resource type="Texture2D" uid="uid://5aeagam5x6h8" path="res://Assets/Player/M3/Character3M_1_idle_1.png" id="44_ns6b4"]
+[ext_resource type="Texture2D" uid="uid://dwksxmre2sp5u" path="res://Assets/Player/M3/Character3M_1_idle_2.png" id="45_h5i66"]
+[ext_resource type="Texture2D" uid="uid://dt126m7gy0kql" path="res://Assets/Player/M3/Character3M_1_idle_3.png" id="46_0dphr"]
+[ext_resource type="Texture2D" uid="uid://cd7dslfqrl3ju" path="res://Assets/Player/M3/Character3M_1_idle_4.png" id="47_p8lh8"]
+[ext_resource type="Texture2D" uid="uid://c35fdfxyxrivb" path="res://Assets/Player/M3/Character3M_1_idle_5.png" id="48_boq3x"]
+[ext_resource type="Texture2D" uid="uid://cuvu4fijo3g5p" path="res://Assets/Player/M3/Character3M_1_idle_6.png" id="49_ek6em"]
+[ext_resource type="Texture2D" uid="uid://b3udee8ygb8v7" path="res://Assets/Player/M3/Character3M_1_idle_7.png" id="50_qm21a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afvxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2aetq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4j2le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q71se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s0wjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3gx0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6xkn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6il8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4nb1b")
+}],
+"loop": true,
+"name": &"F1",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_rrfaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tyccn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qdha3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3mvch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ddirp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0ljym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gyabl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kvrr6")
+}],
+"loop": true,
+"name": &"F2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_xwnc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6epin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_85pce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_ggxsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_0mn3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_smltx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_5oaq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_aq6ve")
+}],
+"loop": true,
+"name": &"F3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_j4mpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_e6bqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_c57yx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ifk80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_tmor8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_iandf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_b3mwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_wc0cj")
+}],
+"loop": true,
+"name": &"M1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_shkjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_flhds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_bcgaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_j5kd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_0d2da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_58ebe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_gkusk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_py8vl")
+}],
+"loop": true,
+"name": &"M2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_yir7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_ns6b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_h5i66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_0dphr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_p8lh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_boq3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ek6em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_qm21a")
+}],
+"loop": true,
+"name": &"M3",
+"speed": 5.0
+}]
 
 [node name="Title Screen" type="Control"]
 layout_mode = 3
@@ -19,10 +245,11 @@ color = Color(0.313726, 0.513726, 0.282353, 1)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 38.0
-offset_right = 1094.0
-offset_bottom = 175.0
+offset_left = 134.0
+offset_top = 84.0
+offset_right = 1163.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Project 2D Adventure"
 
@@ -35,6 +262,26 @@ offset_bottom = 432.0
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
+[node name="CustomCharButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 291.0
+offset_right = 959.0
+offset_bottom = 457.0
+theme_override_font_sizes/font_size = 50
+text = "Character
+Select"
+
+[node name="HowtoPlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 497.0
+offset_right = 563.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 50
+text = "How to
+Play"
+
 [node name="Settings Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 724.0
@@ -45,6 +292,7 @@ theme_override_font_sizes/font_size = 50
 text = "Settings"
 
 [node name="Settings Menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -61,6 +309,7 @@ offset_left = 65.0
 offset_top = 38.0
 offset_right = 1094.0
 offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Settings"
 
@@ -73,6 +322,111 @@ offset_bottom = 667.0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
+[node name="Character Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings Background" type="ColorRect" parent="Character Menu"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.313726, 0.513726, 0.282353, 1)
+
+[node name="Settings Label" type="Label" parent="Character Menu"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 38.0
+offset_right = 1094.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 80
+text = "Character Select"
+
+[node name="Back Button" type="Button" parent="Character Menu"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 566.0
+offset_right = 1212.0
+offset_bottom = 667.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="MaleFemale Button" type="Button" parent="Character Menu"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 455.0
+offset_right = 816.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 50
+text = "Change
+Gender"
+
+[node name="Left Button" type="Button" parent="Character Menu"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 256.0
+offset_right = 654.0
+offset_bottom = 401.0
+theme_override_font_sizes/font_size = 100
+text = "<"
+
+[node name="Right Button" type="Button" parent="Character Menu"]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 256.0
+offset_right = 851.0
+offset_bottom = 401.0
+theme_override_font_sizes/font_size = 100
+text = ">"
+
+[node name="Character" type="AnimatedSprite2D" parent="Character Menu"]
+texture_filter = 1
+position = Vector2(251, 408)
+scale = Vector2(15, 15)
+sprite_frames = SubResource("SpriteFrames_afvxu")
+animation = &"M3"
+frame_progress = 0.228777
+
+[node name="Howto Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings Background" type="ColorRect" parent="Howto Menu"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.313726, 0.513726, 0.282353, 1)
+
+[node name="Settings Label" type="Label" parent="Howto Menu"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 38.0
+offset_right = 1094.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 80
+text = "How to Play"
+
+[node name="Back Button" type="Button" parent="Howto Menu"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 566.0
+offset_right = 1212.0
+offset_bottom = 667.0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
 [connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CustomCharButton" to="." method="_on_custom_char_button_pressed"]
+[connection signal="pressed" from="HowtoPlayButton" to="." method="_on_howtoplay_button_pressed"]
 [connection signal="pressed" from="Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Character Menu/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Character Menu/MaleFemale Button" to="." method="_on_male_female_button_pressed"]
+[connection signal="pressed" from="Character Menu/Left Button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Character Menu/Right Button" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Howto Menu/Back Button" to="." method="_on_back_button_pressed"]
