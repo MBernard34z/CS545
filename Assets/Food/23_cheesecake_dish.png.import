@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0atqk6cqavhl"
-path="res://.godot/imported/background.jpg-2887a22013a603b5cbb3d1e6e558da4d.ctex"
+uid="uid://i40i7s310jh4"
+path="res://.godot/imported/23_cheesecake_dish.png-2eaebf78ae7bc4fe8cdd13e59ca8242b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menus/background.jpg"
-dest_files=["res://.godot/imported/background.jpg-2887a22013a603b5cbb3d1e6e558da4d.ctex"]
+source_file="res://Assets/Food/23_cheesecake_dish.png"
+dest_files=["res://.godot/imported/23_cheesecake_dish.png-2eaebf78ae7bc4fe8cdd13e59ca8242b.ctex"]
 
 [params]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://bvh4tf5rbipfx"]
+[gd_scene load_steps=55 format=3 uid="uid://bvh4tf5rbipfx"]
 
 [ext_resource type="Script" uid="uid://raocbm7w4f2d" path="res://Scripts/title_screen.gd" id="1_klylv"]
 [ext_resource type="FontFile" uid="uid://nsqxl2g376m6" path="res://Assets/Fonts/Future.ttf" id="2_p3fck"]
+[ext_resource type="AudioStream" uid="uid://cbbawsv8rfykk" path="res://Assets/Audio/Effects/UI/click.ogg" id="2_s0wjx"]
 [ext_resource type="Texture2D" uid="uid://c5kd475hwnkyy" path="res://Assets/Player/F1/Character1F_3_idle_0.png" id="3_2aetq"]
 [ext_resource type="Texture2D" uid="uid://dqmgxabjtnoef" path="res://Assets/Player/F1/Character1F_3_idle_1.png" id="4_4j2le"]
 [ext_resource type="Texture2D" uid="uid://cqxeggd1wg2c0" path="res://Assets/Player/F1/Character1F_3_idle_2.png" id="5_q71se"]
@@ -50,6 +51,8 @@
 [ext_resource type="Texture2D" uid="uid://c35fdfxyxrivb" path="res://Assets/Player/M3/Character3M_1_idle_5.png" id="48_boq3x"]
 [ext_resource type="Texture2D" uid="uid://cuvu4fijo3g5p" path="res://Assets/Player/M3/Character3M_1_idle_6.png" id="49_ek6em"]
 [ext_resource type="Texture2D" uid="uid://b3udee8ygb8v7" path="res://Assets/Player/M3/Character3M_1_idle_7.png" id="50_qm21a"]
+[ext_resource type="PackedScene" uid="uid://r0hjk6oul8ab" path="res://Extras/transition_screen.tscn" id="51_4j2le"]
+[ext_resource type="PackedScene" uid="uid://i7nt2t1q1cea" path="res://Scenes/collectable.tscn" id="51_q71se"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afvxu"]
 animations = [{
@@ -237,6 +240,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_klylv")
 
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s0wjx")
+volume_db = -15.0
+
 [node name="Title Background" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1280.0
@@ -255,41 +262,55 @@ text = "Project 2D Adventure"
 
 [node name="Start Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 336.0
-offset_top = 341.0
-offset_right = 511.0
-offset_bottom = 432.0
+offset_left = 188.0
+offset_top = 294.0
+offset_right = 363.0
+offset_bottom = 385.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
 [node name="CustomCharButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 665.0
-offset_top = 291.0
-offset_right = 959.0
-offset_bottom = 457.0
+offset_left = 513.0
+offset_top = 243.0
+offset_right = 807.0
+offset_bottom = 409.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Character
 Select"
 
 [node name="HowtoPlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 497.0
-offset_right = 563.0
-offset_bottom = 660.0
+offset_left = 203.0
+offset_top = 446.0
+offset_right = 494.0
+offset_bottom = 609.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "How to
 Play"
 
 [node name="Settings Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 724.0
-offset_top = 510.0
-offset_right = 965.0
-offset_bottom = 611.0
+offset_left = 616.0
+offset_top = 495.0
+offset_right = 857.0
+offset_bottom = 596.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Settings"
+
+[node name="Collectables Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 350.0
+offset_right = 1216.0
+offset_bottom = 465.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 50
+text = "Collectables"
 
 [node name="Settings Menu" type="Control" parent="."]
 visible = false
@@ -319,6 +340,7 @@ offset_left = 1044.0
 offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
@@ -328,13 +350,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Settings Background" type="ColorRect" parent="Character Menu"]
+[node name="Character Background" type="ColorRect" parent="Character Menu"]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.313726, 0.513726, 0.282353, 1)
 
-[node name="Settings Label" type="Label" parent="Character Menu"]
+[node name="Character Label" type="Label" parent="Character Menu"]
 layout_mode = 0
 offset_left = 65.0
 offset_top = 38.0
@@ -350,6 +372,7 @@ offset_left = 1044.0
 offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
@@ -359,6 +382,7 @@ offset_left = 566.0
 offset_top = 455.0
 offset_right = 816.0
 offset_bottom = 611.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Change
 Gender"
@@ -369,6 +393,7 @@ offset_left = 526.0
 offset_top = 256.0
 offset_right = 654.0
 offset_bottom = 401.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 100
 text = "<"
 
@@ -378,6 +403,7 @@ offset_left = 723.0
 offset_top = 256.0
 offset_right = 851.0
 offset_bottom = 401.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 100
 text = ">"
 
@@ -395,13 +421,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Settings Background" type="ColorRect" parent="Howto Menu"]
+[node name="Howto Background" type="ColorRect" parent="Howto Menu"]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.313726, 0.513726, 0.282353, 1)
 
-[node name="Settings Label" type="Label" parent="Howto Menu"]
+[node name="Howto Label" type="Label" parent="Howto Menu"]
 layout_mode = 0
 offset_left = 65.0
 offset_top = 38.0
@@ -417,16 +443,104 @@ offset_left = 1044.0
 offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "Back"
+
+[node name="Collectable Menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Collectable Background" type="ColorRect" parent="Collectable Menu"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.313726, 0.513726, 0.282353, 1)
+
+[node name="Collectable Label" type="Label" parent="Collectable Menu"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 38.0
+offset_right = 1094.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 80
+text = "Collectables"
+
+[node name="Back Button" type="Button" parent="Collectable Menu"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 566.0
+offset_right = 1212.0
+offset_bottom = 667.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="C" type="Control" parent="Collectable Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Collectable1" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(369, 231)
+scale = Vector2(3, 3)
+
+[node name="Collectable2" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(609, 231)
+scale = Vector2(3, 3)
+
+[node name="Collectable3" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(849, 231)
+scale = Vector2(3, 3)
+
+[node name="Collectable4" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(369, 416)
+scale = Vector2(3, 3)
+
+[node name="Collectable5" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(609, 416)
+scale = Vector2(3, 3)
+
+[node name="Collectable6" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(849, 416)
+scale = Vector2(3, 3)
+
+[node name="Collectable7" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(369, 601)
+scale = Vector2(3, 3)
+
+[node name="Collectable8" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(609, 601)
+scale = Vector2(3, 3)
+
+[node name="Collectable9" parent="Collectable Menu/C" instance=ExtResource("51_q71se")]
+modulate = Color(1, 1, 1, 0.235294)
+position = Vector2(849, 601)
+scale = Vector2(3, 3)
+
+[node name="Transition Screen" parent="." instance=ExtResource("51_4j2le")]
+visible = false
 
 [connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CustomCharButton" to="." method="_on_custom_char_button_pressed"]
 [connection signal="pressed" from="HowtoPlayButton" to="." method="_on_howtoplay_button_pressed"]
 [connection signal="pressed" from="Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Collectables Button" to="." method="_on_collectables_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Character Menu/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Character Menu/MaleFemale Button" to="." method="_on_male_female_button_pressed"]
 [connection signal="pressed" from="Character Menu/Left Button" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="Character Menu/Right Button" to="." method="_on_right_button_pressed"]
 [connection signal="pressed" from="Howto Menu/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Collectable Menu/Back Button" to="." method="_on_back_button_pressed"]

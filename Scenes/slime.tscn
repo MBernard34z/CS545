@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://8n88mhr01ru2"]
+
+[ext_resource type="Texture2D" uid="uid://bis2fveh06qrq" path="res://Assets/Slimes/Blue_Comun_slime.png" id="1_aiwxb"]
+[ext_resource type="Script" uid="uid://dxu4yq4tedssu" path="res://Scripts/slime.gd" id="1_paq7w"]
+[ext_resource type="Texture2D" uid="uid://dahbx70fvlo6v" path="res://Assets/Slimes/Comun_slime.png" id="2_paq7w"]
+[ext_resource type="Texture2D" uid="uid://8dlyf5rgqcd" path="res://Assets/Slimes/Red_Comun_slime.png" id="3_f4si1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gljc"]
+atlas = ExtResource("1_aiwxb")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vblni"]
+atlas = ExtResource("1_aiwxb")
+region = Rect2(36, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e388w"]
+atlas = ExtResource("2_paq7w")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4o34"]
+atlas = ExtResource("2_paq7w")
+region = Rect2(36, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y26kt"]
+atlas = ExtResource("3_f4si1")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7ij5"]
+atlas = ExtResource("3_f4si1")
+region = Rect2(36, 0, 36, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psnrq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gljc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vblni")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e388w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4o34")
+}],
+"loop": true,
+"name": &"green",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y26kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7ij5")
+}],
+"loop": true,
+"name": &"red",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiwxb"]
+size = Vector2(12, 8)
+
+[node name="Slime" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_paq7w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -10)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_psnrq")
+animation = &"green"
+frame_progress = 0.246131
+flip_h = true
+
+[node name="Area2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_aiwxb")
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="DownLeft" type="RayCast2D" parent="Rays"]
+position = Vector2(-18, -1)
+target_position = Vector2(0, 6)
+collision_mask = 2
+
+[node name="DownRight" type="RayCast2D" parent="Rays"]
+position = Vector2(18, -1)
+target_position = Vector2(0, 6)
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="Rays"]
+position = Vector2(15, -9)
+target_position = Vector2(2, 0)
+collision_mask = 2
+
+[node name="Left" type="RayCast2D" parent="Rays"]
+position = Vector2(-15, -9)
+target_position = Vector2(-2, 0)
+collision_mask = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

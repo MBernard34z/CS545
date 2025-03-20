@@ -1,4 +1,4 @@
-[gd_scene load_steps=282 format=3 uid="uid://bkejug58lmogx"]
+[gd_scene load_steps=285 format=3 uid="uid://bkejug58lmogx"]
 
 [ext_resource type="Script" uid="uid://c5a2li56gqq2" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://cvt8ei57xxsf2" path="res://Assets/Player/M1/Character1M_3_damage_0.png" id="2_qpa8y"]
@@ -229,6 +229,8 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://jolcikymlwge" path="res://Extras/state_machine_m1.tres" id="227_j1njn"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cg3tlsyvi7e3p" path="res://Extras/state_machine_m2.tres" id="228_1o6t6"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://dsfuw4ym36x10" path="res://Extras/state_machine_m3.tres" id="229_anjwu"]
+[ext_resource type="AudioStream" uid="uid://fueb2rb2c1j1" path="res://Assets/Audio/Effects/Game/playerHurt.ogg" id="231_1o6t6"]
+[ext_resource type="AudioStream" uid="uid://dkajypk7lfm4m" path="res://Assets/Audio/Effects/Game/jump.wav" id="231_anjwu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_feq18"]
 animations = [{
@@ -1141,7 +1143,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcnj3"]
 radius = 18.0
-height = 66.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_g3f08"]
 resource_name = "DamageF1"
@@ -2633,6 +2635,9 @@ _data = {
 &"RunM3": SubResource("Animation_vnhqv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wklt6"]
+size = Vector2(23, 18)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 15
 script = ExtResource("1_v0iea")
@@ -2646,7 +2651,7 @@ animation = &"IdleM1"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -33)
+position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_wcnj3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -2695,3 +2700,24 @@ root_node = NodePath("../AnimationTreeF1")
 tree_root = ExtResource("229_anjwu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0
+
+[node name="CTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Punch" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Punch"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_wklt6")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("231_1o6t6")
+volume_db = -12.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("231_anjwu")
+pitch_scale = 1.5
