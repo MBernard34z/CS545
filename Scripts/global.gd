@@ -2,18 +2,23 @@ extends Node
 
 #global vars declared here
 var current_scene = null
-var file = "user://save03.save"
+var file = "user://save04.save"
 
 var save_data = {
 	player = "M1",
-	controls = [],
+	controls = [null, null, null, null],
 	difficulty = "M",
 	colorblind = false,
-	volume = 5,
+	volume = [0,0,0],
 	progress = 0,
 	checkpoint = 0,
 	collectables = [[0,0,0], [0,0,0], [0,0,0]]
 }
+#Controls
+#Left
+#Right
+#Jump
+#Punch
 #Progress
 #0: None
 #1: Move and Jump

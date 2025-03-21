@@ -1,7 +1,52 @@
 extends CanvasLayer
 
+var left
+var right
+var jump
+var punch
+
 func _ready() -> void:
 	$TextureRect.visible = false
+	update_buttons()
+
+func update_buttons():
+	if Global.save_data.controls[0] == null:
+		left = "A"
+	else:
+		left = trim_button(OS.get_keycode_string\
+		(Global.save_data.controls[0].keycode))
+	if Global.save_data.controls[1] == null:
+		right = "D"
+	else:
+		right = trim_button(OS.get_keycode_string\
+		(Global.save_data.controls[1].keycode))
+	if Global.save_data.controls[2] == null:
+		jump = "W"
+	else:
+		jump = trim_button(OS.get_keycode_string\
+		(Global.save_data.controls[2].keycode))
+	if Global.save_data.controls[3] == null:
+		punch = "P"
+	else:
+		punch = trim_button(OS.get_keycode_string\
+		(Global.save_data.controls[3].keycode))
+	$Movement/Label.text = "Move with\n["+left+"] and ["+right+"]"
+	$Jump/Label2.text = "Jump with ["+jump+"]"
+	$Punch/Label6.text = "Punch rubble\nwith ["+punch+"]"
+	
+func trim_button(long):
+	var tex = long
+	if tex == "Right":
+		tex = ">"
+	elif tex == "Left":
+		tex = "<"
+	elif tex == "Up":
+		tex = "^"
+	elif tex == "Down":
+		tex = "V"
+	elif tex.length() > 3:
+		tex = tex.left(3)
+	return tex
 
 func _on_sp_11_body_entered(_body: Node2D) -> void:
 	$TextureRect.visible = true

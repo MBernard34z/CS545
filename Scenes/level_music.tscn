@@ -5,3 +5,4 @@
 [node name="LevelMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_5ofvd")
 volume_db = -18.0
+bus = &"music"

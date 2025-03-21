@@ -1,11 +1,13 @@
 extends Control
 
 var character
+var page = 1
 
 func _ready():
 	LevelMusic.stop()
 	character = Global.save_data.player
-	$"Character Menu/Character".play(character)
+	set_controls()
+	play_character_animations()
 	call_deferred("set_collectables")
 	$"Transition Screen".play("fade_in")
 
@@ -37,6 +39,10 @@ func _on_back_button_pressed() -> void:
 	$"Howto Menu".visible = false
 	$"Character Menu".visible = false
 	$"Collectable Menu".visible = false
+	Global.save_data.volume = \
+	[AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
+	AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music")),
+	AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx"))]
 	Global.save()
 
 func _input(event: InputEvent) -> void:
@@ -59,7 +65,7 @@ func _on_male_female_button_pressed() -> void:
 		"F3":
 			character = "M3"
 	Global.save_data.player = character 
-	$"Character Menu/Character".play(character) 
+	play_character_animations()
 
 func _on_left_button_pressed() -> void:
 	$Click.play()
@@ -77,7 +83,7 @@ func _on_left_button_pressed() -> void:
 		"F3":
 			character = "F2"
 	Global.save_data.player = character 
-	$"Character Menu/Character".play(character) 
+	play_character_animations()
 
 func _on_right_button_pressed() -> void:
 	$Click.play()
@@ -95,7 +101,7 @@ func _on_right_button_pressed() -> void:
 		"F3":
 			character = "F1"
 	Global.save_data.player = character 
-	$"Character Menu/Character".play(character) 
+	play_character_animations()
 
 func set_collectables():
 	$"Collectable Menu/C/Collectable1".get_child(0).play("green")
@@ -126,3 +132,79 @@ func set_collectables():
 	if Global.save_data.collectables[2][2] == 1:
 		$"Collectable Menu/C/Collectable9".modulate.a8 = 255
 			
+func play_character_animations():
+	$"Character Menu/Character".play(character)
+	$"Howto Menu/HTP Menu 1/Move".play("Run"+character)
+	$"Howto Menu/HTP Menu 1/Jump".play("Jump"+character)
+	$"Howto Menu/HTP Menu 2/Punch".play("Punch"+character)
+	$"Howto Menu/HTP Menu 2/Fall".play("Fall"+character)
+
+func set_controls():
+	if Global.save_data.controls[0] != null:
+		InputMap.action_erase_events("left")
+		var gsdcl = dict_to_input_event(Global.save_data.controls[0])
+		InputMap.action_add_event("left", gsdcl)
+		$"Howto Menu/HTP Menu 1/Left Button".text = trim_control(gsdcl)
+	if Global.save_data.controls[1] != null:
+		InputMap.action_erase_events("right")
+		var gsdcl = dict_to_input_event(Global.save_data.controls[1])
+		InputMap.action_add_event("right", gsdcl)
+		$"Howto Menu/HTP Menu 1/Right Button".text = trim_control(gsdcl)
+	if Global.save_data.controls[2] != null:
+		InputMap.action_erase_events("jump")
+		var gsdcl = dict_to_input_event(Global.save_data.controls[2])
+		InputMap.action_add_event("jump", gsdcl)
+		$"Howto Menu/HTP Menu 1/Jump Button".text = trim_control(gsdcl)
+	if Global.save_data.controls[3] != null:
+		InputMap.action_erase_events("punch")
+		var gsdcl = dict_to_input_event(Global.save_data.controls[3])
+		InputMap.action_add_event("punch", gsdcl)
+		$"Howto Menu/HTP Menu 2/Punch Button".text = trim_control(gsdcl)
+
+func trim_control(long):
+	var tex = long.as_text().trim_suffix( "(Physical)")
+	if tex == "Right":
+		tex = ">"
+	elif tex == "Left":
+		tex = "<"
+	elif tex == "Up":
+		tex = "^"
+	elif tex == "Down":
+		tex = "V"
+	elif tex.length() > 3:
+		tex = tex.left(3)
+	return tex
+	
+func dict_to_input_event(data: Dictionary) -> InputEventKey:
+	var event = InputEventKey.new()
+	event.keycode = data.get("keycode", 0)
+	event.location = data.get("location")
+	event.pressed = data.get("pressed", false)
+	event.echo = data.get("echo")
+	return event
+
+func _on_page_left_button_pressed() -> void:
+	$Click.play()
+	change_page(false)
+	page -= 1
+	if page == 0:
+		page = 2 #change this
+	change_page(true)
+
+func _on_page_right_button_pressed() -> void:
+	$Click.play()
+	change_page(false)
+	page += 1
+	if page == 3:#change this
+		page = 1
+	change_page(true)
+
+func change_page(make_visible):
+	match page:
+		1:
+			$"Howto Menu/HTP Menu 1".visible = make_visible
+		2:
+			$"Howto Menu/HTP Menu 2".visible = make_visible
+		#add more here
+	if make_visible:
+		$"Howto Menu/Page Label".text = "Page: " + str(page)

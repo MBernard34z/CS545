@@ -9,6 +9,7 @@ var character = Global.save_data.player
 var anim_tree
 var anim_state
 var health = 3
+var game_paused = false
 var iframes = false
 @onready var ctimer = $CTimer
 var onfloor = true
@@ -97,6 +98,16 @@ func _input(event: InputEvent) -> void:
 		$"../Transition Screen".play("fade_to_black")
 		await get_tree().create_timer(1).timeout
 		Global.switch_scene("res://Scenes/title_screen.tscn")
+		#game_paused = !game_paused
+		#if game_paused:
+			#Engine.time_scale = 0
+			#set_physics_process(false)
+			#get_tree().paused = true
+			#pause menu.visible
+		#else:
+			#Engine.time_scale = 1
+			#set_physics_process(true)
+			#pausemenu.visible 
 		
 func hit(from):
 	if not iframes:
