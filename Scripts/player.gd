@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -430.0
+var acc = 1000
 var jumping = false
 var punching = false
 var character = Global.save_data.player
@@ -13,8 +14,18 @@ var game_paused = false
 var iframes = false
 @onready var ctimer = $CTimer
 var onfloor = true
+var dash_speed = 700.0
+var air_resistance = 225.0
+var can_air_dash = false
 
 func _ready():
+	match Global.save_data.difficulty:
+		"E":
+			health = 5
+		"M":
+			health = 3
+		"H":
+			health = 1
 	$AnimationTreeF1.active = false
 	match character:
 		"F1":
@@ -52,18 +63,41 @@ func _physics_process(delta: float) -> void:
 		jumping = false
 		anim_state.travel("Land")
 		onfloor = true
+		can_air_dash = false
 	else:
 		onfloor = true
-
-	if Input.is_action_just_pressed("jump") and \
-	(is_on_floor() or not ctimer.is_stopped()) and not punching:
-		velocity.y = JUMP_VELOCITY
-		$Jump.play()
-		anim_state.travel("Jump")
+		can_air_dash = false
 
 	var direction := Input.get_axis("left", "right")
-	if direction and not punching:
+	
+	if Input.is_action_just_pressed("jump"):
+		if (is_on_floor() or not ctimer.is_stopped()) and not punching:
+			velocity.y = JUMP_VELOCITY
+			$Jump.play()
+			anim_state.travel("Jump")
+			can_air_dash = true
+		elif Global.save_data.progress >= 5:
+			if $AnimatedSprite2D.flip_h and $WallRays/LeftRay.is_colliding():
+				velocity.y = JUMP_VELOCITY * 0.85
+				Input.action_release("left")
+				$AnimatedSprite2D.flip_h = false
+				velocity.x = 0.7 * dash_speed
+				$Jump.play()
+				anim_state.travel("Jump")
+				can_air_dash = false
+			elif not $AnimatedSprite2D.flip_h and $WallRays/RightRay.is_colliding():
+				velocity.y = JUMP_VELOCITY * 0.9
+				Input.action_release("right")
+				$AnimatedSprite2D.flip_h = true
+				velocity.x = -0.7 * dash_speed
+				$Jump.play()
+				anim_state.travel("Jump")
+				can_air_dash = false
+
+	if direction and not punching and (is_on_floor() or can_air_dash):
 		velocity.x = direction * SPEED
+	elif not is_on_floor() and not can_air_dash:
+		velocity.x = move_toward(velocity.x, direction * SPEED, acc * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
@@ -85,12 +119,22 @@ func _physics_process(delta: float) -> void:
 		$Punch/CollisionShape2D.position.x = 0
 		punching = false
 		
+	if Input.is_action_just_pressed("dash") and can_air_dash and not is_on_floor()\
+	and Global.save_data.progress >= 4:
+		can_air_dash = false
+		if $AnimatedSprite2D.flip_h == false:
+			velocity.x = dash_speed 
+		else:
+			velocity.x = -dash_speed 
+		velocity.y = JUMP_VELOCITY * 0.4
+		
 	anim_tree.set("parameters/Move/blend_position", direction)
 		
 	move_and_slide()
 	
 	if onfloor and !is_on_floor() and not velocity.y < 0:
 		ctimer.start()
+		can_air_dash = true
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("escape"):
@@ -125,7 +169,13 @@ func hit(from):
 			await get_tree().create_timer(1.5).timeout
 			$"../Transition Screen".play("fade_to_black")
 			await get_tree().create_timer(1).timeout
-			Global.switch_scene("res://Scenes/level_1.tscn")
+			match $"..".name:
+				"Level 1":
+					Global.switch_scene("res://Scenes/level_1.tscn")
+				"Level 2":
+					Global.switch_scene("res://Scenes/level_2.tscn")
+				"Level 3":
+					Global.switch_scene("res://Scenes/level_3.tscn")
 		else:
 			set_physics_process(false)
 			anim_state.travel("Damage")

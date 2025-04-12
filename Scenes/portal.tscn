@@ -379,7 +379,5 @@ script = ExtResource("1_dashy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pvi6c")
-animation = &"greenClose"
-frame = 7
-frame_progress = 1.0
+animation = &"purpleOpen"
 flip_h = true

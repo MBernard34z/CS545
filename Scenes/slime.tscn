@@ -78,8 +78,7 @@ texture_filter = 1
 position = Vector2(0, -10)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_psnrq")
-animation = &"green"
-frame_progress = 0.246131
+animation = &"blue"
 flip_h = true
 
 [node name="Area2D" type="CollisionShape2D" parent="."]

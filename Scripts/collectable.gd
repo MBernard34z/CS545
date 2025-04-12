@@ -24,9 +24,9 @@ func _ready() -> void:
 		1:
 			$AnimatedSprite2D.play("green")
 		2:
-			$AnimatedSprite2D.play("red")
+			$AnimatedSprite2D.play("yellow")
 		3:
-			$AnimatedSprite2D.play("blue")
+			$AnimatedSprite2D.play("red")
 			
 	if Global.save_data.collectables[level-1][CNum-1] == 1:
 		modulate.a8 = 60

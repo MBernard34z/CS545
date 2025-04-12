@@ -2723,3 +2723,16 @@ bus = &"sfx"
 stream = ExtResource("231_anjwu")
 pitch_scale = 1.5
 bus = &"sfx"
+
+[node name="WallRays" type="Node2D" parent="."]
+
+[node name="RightRay" type="RayCast2D" parent="WallRays"]
+position = Vector2(3, -31)
+target_position = Vector2(17, 0)
+collision_mask = 2
+
+[node name="LeftRay" type="RayCast2D" parent="WallRays"]
+position = Vector2(-3, -31)
+rotation = 3.14159
+target_position = Vector2(17, 0)
+collision_mask = 2

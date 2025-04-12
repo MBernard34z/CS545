@@ -15,7 +15,12 @@ func _on_start_button_pressed() -> void:
 	$Click.play()
 	$"Transition Screen".play("fade_to_black")
 	await get_tree().create_timer(1).timeout
-	Global.switch_scene("res://Scenes/level_1.tscn")
+	if Global.save_data.checkpoint < 6:
+		Global.switch_scene("res://Scenes/level_1.tscn")
+	elif Global.save_data.checkpoint < 10:
+		Global.switch_scene("res://Scenes/level_2.tscn")
+	else:
+		Global.switch_scene("res://Scenes/level_3.tscn")
 	
 func _on_settings_button_pressed() -> void:
 	$Click.play()
@@ -107,12 +112,12 @@ func set_collectables():
 	$"Collectable Menu/C/Collectable1".get_child(0).play("green")
 	$"Collectable Menu/C/Collectable2".get_child(0).play("green")
 	$"Collectable Menu/C/Collectable3".get_child(0).play("green")
-	$"Collectable Menu/C/Collectable4".get_child(0).play("red")
-	$"Collectable Menu/C/Collectable5".get_child(0).play("red")
-	$"Collectable Menu/C/Collectable6".get_child(0).play("red")
-	$"Collectable Menu/C/Collectable7".get_child(0).play("blue")
-	$"Collectable Menu/C/Collectable8".get_child(0).play("blue")
-	$"Collectable Menu/C/Collectable9".get_child(0).play("blue")
+	$"Collectable Menu/C/Collectable4".get_child(0).play("yellow")
+	$"Collectable Menu/C/Collectable5".get_child(0).play("yellow")
+	$"Collectable Menu/C/Collectable6".get_child(0).play("yellow")
+	$"Collectable Menu/C/Collectable7".get_child(0).play("red")
+	$"Collectable Menu/C/Collectable8".get_child(0).play("red")
+	$"Collectable Menu/C/Collectable9".get_child(0).play("red")
 	if Global.save_data.collectables[0][0] == 1:
 		$"Collectable Menu/C/Collectable1".modulate.a8 = 255
 	if Global.save_data.collectables[0][1] == 1:
@@ -138,6 +143,8 @@ func play_character_animations():
 	$"Howto Menu/HTP Menu 1/Jump".play("Jump"+character)
 	$"Howto Menu/HTP Menu 2/Punch".play("Punch"+character)
 	$"Howto Menu/HTP Menu 2/Fall".play("Fall"+character)
+	$"Howto Menu/HTP Menu 3/AirDash".play("Fall"+character)
+	$"Howto Menu/HTP Menu 3/WallJump".play("Jump"+character)
 
 func set_controls():
 	if Global.save_data.controls[0] != null:
@@ -160,6 +167,11 @@ func set_controls():
 		var gsdcl = dict_to_input_event(Global.save_data.controls[3])
 		InputMap.action_add_event("punch", gsdcl)
 		$"Howto Menu/HTP Menu 2/Punch Button".text = trim_control(gsdcl)
+	if Global.save_data.controls[4] != null:
+		InputMap.action_erase_events("dash")
+		var gsdcl = dict_to_input_event(Global.save_data.controls[4])
+		InputMap.action_add_event("dash", gsdcl)
+		$"Howto Menu/HTP Menu 3/AirDash Button".text = trim_control(gsdcl)
 
 func trim_control(long):
 	var tex = long.as_text().trim_suffix( "(Physical)")
@@ -188,14 +200,14 @@ func _on_page_left_button_pressed() -> void:
 	change_page(false)
 	page -= 1
 	if page == 0:
-		page = 2 #change this
+		page = 3 #change this
 	change_page(true)
 
 func _on_page_right_button_pressed() -> void:
 	$Click.play()
 	change_page(false)
 	page += 1
-	if page == 3:#change this
+	if page == 4:#change this
 		page = 1
 	change_page(true)
 
@@ -205,6 +217,8 @@ func change_page(make_visible):
 			$"Howto Menu/HTP Menu 1".visible = make_visible
 		2:
 			$"Howto Menu/HTP Menu 2".visible = make_visible
+		3:
+			$"Howto Menu/HTP Menu 3".visible = make_visible
 		#add more here
 	if make_visible:
 		$"Howto Menu/Page Label".text = "Page: " + str(page)

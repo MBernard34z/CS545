@@ -42,6 +42,9 @@ func _update_button(a_t_r, key):
 		"punch":
 			$"HTP Menu 2/Punch Button".text = tex
 			Global.save_data.controls[3] = input_event_to_dict(key)
+		"dash":
+			$"HTP Menu 3/AirDash Button".text = tex
+			Global.save_data.controls[4] = input_event_to_dict(key)
 			
 func input_event_to_dict(event: InputEventKey) -> Dictionary:
 	return {
@@ -81,8 +84,19 @@ func _on_punch_button_pressed() -> void:
 		$"HTP Menu 2/Punch Button".text = ""
 
 func hide_unknown_controls():
-	if Global.save_data.progress <= 3:
+	if Global.save_data.progress <= 6:
 		pass
+	if Global.save_data.progress <= 5:
+		pass
+	if Global.save_data.progress <= 4:
+		$"HTP Menu 3/WallJump Label".text = "????\n????"
+		$"HTP Menu 3/WallJump".modulate = Color(0,0,0)
+	if Global.save_data.progress <= 3:
+		$"HTP Menu 3/AirDash Label".text = "?????"
+		$"HTP Menu 3/AirDash".modulate = Color(0,0,0)
+		$"HTP Menu 3/Lines".modulate = Color(0,0,0)
+		$"HTP Menu 3/AirDash Button".text = "?"
+		$"HTP Menu 3/AirDash Button".disabled = true
 	if Global.save_data.progress <= 2:
 		$"HTP Menu 2/Punch Label".text = "?????"
 		$"HTP Menu 2/Punch".modulate = Color(0,0,0)
@@ -103,3 +117,10 @@ func hide_unknown_controls():
 		$"HTP Menu 1/Right Button".disabled = true
 		$"HTP Menu 1/Jump Button".text = "?"
 		$"HTP Menu 1/Jump Button".disabled = true
+
+func _on_air_dash_button_pressed() -> void:
+	$"../Click".play()
+	if !is_remapping:
+		is_remapping = true 
+		action_to_remap = "dash"
+		$"HTP Menu 3/AirDash Button".text = ""

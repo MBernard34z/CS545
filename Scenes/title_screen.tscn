@@ -1,5 +1,6 @@
-[gd_scene load_steps=237 format=3 uid="uid://bvh4tf5rbipfx"]
+[gd_scene load_steps=241 format=3 uid="uid://bvh4tf5rbipfx"]
 
+[ext_resource type="Shader" uid="uid://dyjm1ob81ucks" path="res://Addons/accesibilitytools/shaders/tritanopia_shader.gdshader" id="1_2qqkf"]
 [ext_resource type="Script" uid="uid://raocbm7w4f2d" path="res://Scripts/title_screen.gd" id="1_klylv"]
 [ext_resource type="FontFile" uid="uid://nsqxl2g376m6" path="res://Assets/Fonts/Future.ttf" id="2_p3fck"]
 [ext_resource type="AudioStream" uid="uid://cbbawsv8rfykk" path="res://Assets/Audio/Effects/UI/click.ogg" id="2_s0wjx"]
@@ -231,6 +232,12 @@
 [ext_resource type="Texture2D" uid="uid://c41i7i3nwl63r" path="res://Assets/Player/M3/Character3M_1_run_6.png" id="225_nwboc"]
 [ext_resource type="Texture2D" uid="uid://nrutsisk4eb7" path="res://Assets/Player/M3/Character3M_1_run_7.png" id="226_csopw"]
 [ext_resource type="Texture2D" uid="uid://bis2fveh06qrq" path="res://Assets/Slimes/Blue_Comun_slime.png" id="227_gsuvv"]
+[ext_resource type="Texture2D" uid="uid://d1nola6mehlix" path="res://Assets/Extras/lines.png" id="231_cs6hm"]
+[ext_resource type="PackedScene" uid="uid://bt7cp6dyu24r5" path="res://Extras/shader.tscn" id="233_362on"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_362on"]
+shader = ExtResource("1_2qqkf")
+shader_parameter/type = 0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afvxu"]
 animations = [{
@@ -1341,6 +1348,7 @@ animations = [{
 }]
 
 [node name="Title Screen" type="Control"]
+material = SubResource("ShaderMaterial_362on")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1828,6 +1836,76 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 50
 text = "P"
 
+[node name="HTP Menu 3" type="Control" parent="Howto Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AirDash Label" type="Label" parent="Howto Menu/HTP Menu 3"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 409.0
+offset_right = 1153.0
+offset_bottom = 546.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Air Dash"
+
+[node name="Lines" type="Sprite2D" parent="Howto Menu/HTP Menu 3"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(193.5, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("231_cs6hm")
+
+[node name="AirDash" type="AnimatedSprite2D" parent="Howto Menu/HTP Menu 3"]
+texture_filter = 1
+position = Vector2(329.5, 325)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_w66jb")
+animation = &"FallM3"
+frame_progress = 0.829617
+
+[node name="AirDash Button" type="Button" parent="Howto Menu/HTP Menu 3"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 495.0
+offset_right = 306.0
+offset_bottom = 595.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 50
+text = "L"
+
+[node name="WallJump Label" type="Label" parent="Howto Menu/HTP Menu 3"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 416.0
+offset_right = 819.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Wall
+Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WallJump" type="AnimatedSprite2D" parent="Howto Menu/HTP Menu 3"]
+texture_filter = 1
+position = Vector2(635, 336)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_w66jb")
+animation = &"JumpF1"
+frame = 1
+frame_progress = 0.0991158
+
+[node name="Wall" type="ColorRect" parent="Howto Menu/HTP Menu 3"]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 178.0
+offset_right = 593.0
+offset_bottom = 413.0
+color = Color(0, 0, 0, 1)
+
 [node name="Collectable Menu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -1913,6 +1991,8 @@ scale = Vector2(3, 3)
 [node name="Transition Screen" parent="." instance=ExtResource("51_4j2le")]
 visible = false
 
+[node name="Shader" parent="." instance=ExtResource("233_362on")]
+
 [connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CustomCharButton" to="." method="_on_custom_char_button_pressed"]
 [connection signal="pressed" from="HowtoPlayButton" to="." method="_on_howtoplay_button_pressed"]
@@ -1933,4 +2013,5 @@ visible = false
 [connection signal="pressed" from="Howto Menu/HTP Menu 1/Right Button" to="Howto Menu" method="_on_right_button_pressed"]
 [connection signal="pressed" from="Howto Menu/HTP Menu 1/Jump Button" to="Howto Menu" method="_on_jump_button_pressed"]
 [connection signal="pressed" from="Howto Menu/HTP Menu 2/Punch Button" to="Howto Menu" method="_on_punch_button_pressed"]
+[connection signal="pressed" from="Howto Menu/HTP Menu 3/AirDash Button" to="Howto Menu" method="_on_air_dash_button_pressed"]
 [connection signal="pressed" from="Collectable Menu/Back Button" to="." method="_on_back_button_pressed"]

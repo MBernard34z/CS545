@@ -3,9 +3,13 @@ Director: Matt Bernardon
 Music & Sounds: https://kenney.nl/assets/category:Audio
 Player: https://muchopixels.itch.io/character-animation-asset-pack
 Tileset 1: https://anokolisa.itch.io/basic-140-tiles-grassland-and-mines
+Tileset 2: https://pzuh.itch.io/free-desert-platformer-tileset
+Tileset 3: https://opengameart.org/content/2d-platformer-volcano-pack-11
 Slimes: https://private-games.itch.io/slimes-pack-free
 Food: https://ghostpixxells.itch.io/pixelfood
 Collectables: https://laredgames.itch.io/gems-coins-free
 Portals: https://elthen.itch.io/2d-pixel-art-portal-sprites
 Button Icons: https://kenney.nl/assets/input-prompts-pixel-16
 Signposts: https://kenney.nl/assets/ui-pack-pixel-adventure
+
+Colorblind plugin: https://godotengine.org/asset-library/asset?user=jguzmanfl

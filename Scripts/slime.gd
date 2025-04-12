@@ -5,27 +5,27 @@ var direction = -1
 var speed = 1
 
 func _ready():
-	if name == "Slime11":
-		$AnimatedSprite2D.play("green")
-		$AnimatedSprite2D.flip_h = true
-	elif name == "Slime12":
-		$AnimatedSprite2D.play("green")
-		move = true
-	elif name == "Slime13":
-		$AnimatedSprite2D.play("green")
-		move = true
-	elif name == "Slime14":
-		$AnimatedSprite2D.play("green")
-		move = true
-	elif name == "Slime15":
-		$AnimatedSprite2D.play("green")
-		move = true
-	elif name == "Slime16":
-		$AnimatedSprite2D.play("green")
-		move = true
-	elif name == "Slime17":
-		$AnimatedSprite2D.play("green")
-		move = true
+	match Global.save_data.difficulty:
+		"E":
+			speed = 0.7
+		"M":
+			speed = 1
+		"H":
+			speed = 1.4
+	match name:
+		"Slime11":
+			$AnimatedSprite2D.play("green")
+			$AnimatedSprite2D.flip_h = true
+		"Slime12", "Slime13", "Slime14", "Slime15", "Slime16", "Slime17":
+			$AnimatedSprite2D.play("green")
+			move = true
+		"Slime21":
+			$AnimatedSprite2D.play("blue")
+			$AnimatedSprite2D.flip_h = true
+		"Slime22", "Slime23", "Slime24", "Slime25", "Slime26":
+			$AnimatedSprite2D.play("blue")
+			move = true
+		
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name.contains("Player"):

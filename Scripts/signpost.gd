@@ -4,6 +4,7 @@ var left
 var right
 var jump
 var punch
+var dash
 
 func _ready() -> void:
 	$TextureRect.visible = false
@@ -30,9 +31,16 @@ func update_buttons():
 	else:
 		punch = trim_button(OS.get_keycode_string\
 		(Global.save_data.controls[3].keycode))
+	if Global.save_data.controls[4] == null:
+		dash = "L"
+	else:
+		dash = trim_button(OS.get_keycode_string\
+		(Global.save_data.controls[4].keycode))
 	$Movement/Label.text = "Move with\n["+left+"] and ["+right+"]"
 	$Jump/Label2.text = "Jump with ["+jump+"]"
 	$Punch/Label6.text = "Punch rubble\nwith ["+punch+"]"
+	$Dash/Label8.text = "Air Dash with ["+dash+"]"
+	$Wall/Label9.text = "Wall jump by repeatedly\npressing ["+jump+"]"
 	
 func trim_button(long):
 	var tex = long
@@ -104,3 +112,28 @@ func _on_sp_15_body_entered(_body: Node2D) -> void:
 func _on_sp_15_body_exited(_body: Node2D) -> void:
 	$TextureRect.visible = false
 	$Punch.visible = false
+
+func _on_sp_16_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$Tree.visible = true
+
+func _on_sp_16_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$Tree.visible = false
+
+
+func _on_sp_21_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$Dash.visible = true
+
+func _on_sp_21_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$Dash.visible = false
+
+func _on_sp_22_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$Wall.visible = true
+
+func _on_sp_22_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$Wall.visible = false
