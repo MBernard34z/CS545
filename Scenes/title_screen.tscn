@@ -1,4 +1,4 @@
-[gd_scene load_steps=241 format=3 uid="uid://bvh4tf5rbipfx"]
+[gd_scene load_steps=244 format=3 uid="uid://bvh4tf5rbipfx"]
 
 [ext_resource type="Shader" uid="uid://dyjm1ob81ucks" path="res://Addons/accesibilitytools/shaders/tritanopia_shader.gdshader" id="1_2qqkf"]
 [ext_resource type="Script" uid="uid://raocbm7w4f2d" path="res://Scripts/title_screen.gd" id="1_klylv"]
@@ -233,11 +233,15 @@
 [ext_resource type="Texture2D" uid="uid://nrutsisk4eb7" path="res://Assets/Player/M3/Character3M_1_run_7.png" id="226_csopw"]
 [ext_resource type="Texture2D" uid="uid://bis2fveh06qrq" path="res://Assets/Slimes/Blue_Comun_slime.png" id="227_gsuvv"]
 [ext_resource type="Texture2D" uid="uid://d1nola6mehlix" path="res://Assets/Extras/lines.png" id="231_cs6hm"]
+[ext_resource type="Texture2D" uid="uid://cqta7rk58scl8" path="res://Assets/Levels/Lava/volcano_pack_38.png" id="232_psexl"]
 [ext_resource type="PackedScene" uid="uid://bt7cp6dyu24r5" path="res://Extras/shader.tscn" id="233_362on"]
+[ext_resource type="Texture2D" uid="uid://dk5jyw5iemao5" path="res://Assets/Levels/Lava/volcano_pack_15.png" id="233_dxexs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_362on"]
 shader = ExtResource("1_2qqkf")
 shader_parameter/type = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs6hm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afvxu"]
 animations = [{
@@ -506,7 +510,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("71_eq4t6")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathF1",
 "speed": 4.0
 }, {
@@ -532,7 +536,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("78_e5tli")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathF2",
 "speed": 4.0
 }, {
@@ -558,7 +562,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("85_dbq40")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathF3",
 "speed": 4.0
 }, {
@@ -584,7 +588,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("92_wjbkk")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathM1",
 "speed": 4.0
 }, {
@@ -610,7 +614,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("99_fw4w1")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathM2",
 "speed": 4.0
 }, {
@@ -636,7 +640,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("106_yvgo6")
 }],
-"loop": true,
+"loop": false,
 "name": &"DeathM3",
 "speed": 4.0
 }, {
@@ -1515,6 +1519,28 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 100
 text = ">"
 
+[node name="ToggleDash Label" type="Label" parent="Settings Menu"]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 407.0
+offset_right = 1076.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Toggle Dash"
+horizontal_alignment = 1
+
+[node name="ToggleDashButton" type="CheckButton" parent="Settings Menu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1070.0
+offset_top = 404.0
+offset_right = 1114.0
+offset_bottom = 435.0
+scale = Vector2(3, 3)
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cs6hm")
+
 [node name="VolumePC" type="PanelContainer" parent="Settings Menu"]
 layout_mode = 0
 offset_left = 659.0
@@ -1906,6 +1932,99 @@ offset_right = 593.0
 offset_bottom = 413.0
 color = Color(0, 0, 0, 1)
 
+[node name="HTP Menu 4" type="Control" parent="Howto Menu"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DoubleJump Label" type="Label" parent="Howto Menu/HTP Menu 4"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 416.0
+offset_right = 819.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Double
+Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoubleJump" type="AnimatedSprite2D" parent="Howto Menu/HTP Menu 4"]
+texture_filter = 1
+position = Vector2(660, 340)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_w66jb")
+animation = &"JumpM1"
+
+[node name="Bad" type="Control" parent="Howto Menu/HTP Menu 4"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dont Label" type="Label" parent="Howto Menu/HTP Menu 4/Bad"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 416.0
+offset_right = 467.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Don't Touch
+the Lava"
+horizontal_alignment = 1
+
+[node name="Lava1" type="Sprite2D" parent="Howto Menu/HTP Menu 4/Bad"]
+position = Vector2(207, 418)
+texture = ExtResource("232_psexl")
+
+[node name="Lava2" type="Sprite2D" parent="Howto Menu/HTP Menu 4/Bad"]
+position = Vector2(335, 418)
+texture = ExtResource("233_dxexs")
+
+[node name="Death" type="AnimatedSprite2D" parent="Howto Menu/HTP Menu 4/Bad"]
+texture_filter = 1
+position = Vector2(234, 258)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_w66jb")
+animation = &"DeathM1"
+frame = 6
+frame_progress = 1.0
+
+[node name="Good" type="Control" parent="Howto Menu/HTP Menu 4"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Can" type="Label" parent="Howto Menu/HTP Menu 4/Good"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 416.0
+offset_right = 467.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 60
+text = "Lava is
+now Safe"
+horizontal_alignment = 1
+
+[node name="Lava3" type="Sprite2D" parent="Howto Menu/HTP Menu 4/Good"]
+position = Vector2(207, 418)
+texture = ExtResource("232_psexl")
+
+[node name="Lava4" type="Sprite2D" parent="Howto Menu/HTP Menu 4/Good"]
+position = Vector2(335, 418)
+texture = ExtResource("233_dxexs")
+
+[node name="Idle" type="AnimatedSprite2D" parent="Howto Menu/HTP Menu 4/Good"]
+texture_filter = 1
+position = Vector2(269, 258)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_w66jb")
+animation = &"IdleM1"
+
 [node name="Collectable Menu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -2002,6 +2121,7 @@ visible = false
 [connection signal="pressed" from="Settings Menu/Change Controls Button" to="Settings Menu" method="_on_change_controls_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Left Button" to="Settings Menu" method="_on_diff_left_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Right Button" to="Settings Menu" method="_on_diff_right_button_pressed"]
+[connection signal="toggled" from="Settings Menu/ToggleDashButton" to="Settings Menu" method="_on_toggle_dash_button_toggled"]
 [connection signal="pressed" from="Character Menu/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Character Menu/MaleFemale Button" to="." method="_on_male_female_button_pressed"]
 [connection signal="pressed" from="Character Menu/Left Button" to="." method="_on_left_button_pressed"]

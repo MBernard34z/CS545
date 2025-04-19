@@ -6,6 +6,7 @@
 [node name="Volume Slider" type="HSlider"]
 offset_right = 8.0
 offset_bottom = 16.0
+mouse_default_cursor_shape = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_0rqdt")

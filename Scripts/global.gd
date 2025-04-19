@@ -2,13 +2,13 @@ extends Node
 
 #global vars declared here
 var current_scene = null
-var file = "user://save06.save"
+var file = "user://save07.save"
 
 var save_data = {
 	player = "M1",
 	controls = [null, null, null, null, null],
 	difficulty = "M",
-	colorblind = false,
+	toggleDash = false,
 	volume = [0,0,0],
 	progress = 0,
 	checkpoint = 0,
@@ -27,10 +27,13 @@ var save_data = {
 #3: Punch
 #4: Dash
 #5: Wall jump
+#6: Lava walk
+#7: Double Jump
 
 #checkpoint
 #Level 1: 0-5
 #Level 2: 6-9
+#Level 3: 10-
 
 func _ready():
 	var root = get_tree().root

@@ -39,8 +39,13 @@ func update_buttons():
 	$Movement/Label.text = "Move with\n["+left+"] and ["+right+"]"
 	$Jump/Label2.text = "Jump with ["+jump+"]"
 	$Punch/Label6.text = "Punch rubble\nwith ["+punch+"]"
-	$Dash/Label8.text = "Air Dash with ["+dash+"]"
+	if Global.save_data.toggleDash:
+		$Dash/Label8.text = "Charge an Air Dash with\n["+dash+"], \
+		then press ["+jump+"]\nto Jump & Air Dash"
+	else:
+		$Dash/Label8.text = "Air Dash with ["+dash+"]"
 	$Wall/Label9.text = "Wall jump by repeatedly\npressing ["+jump+"]"
+	$DoubleJump/Label13.text = "Press ["+jump+"] twice\nto Double Jump!"
 	
 func trim_button(long):
 	var tex = long
@@ -137,3 +142,36 @@ func _on_sp_22_body_entered(_body: Node2D) -> void:
 func _on_sp_22_body_exited(_body: Node2D) -> void:
 	$TextureRect.visible = false
 	$Wall.visible = false
+
+
+func _on_sp_31_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$DontTouch.visible = true
+
+func _on_sp_31_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$DontTouch.visible = false
+
+func _on_sp_32_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$Touch.visible = true
+
+func _on_sp_32_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$Touch.visible = false
+
+func _on_sp_33_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$JumpOff.visible = true
+
+func _on_sp_33_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$JumpOff.visible = false
+
+func _on_sp_34_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$DoubleJump.visible = true
+
+func _on_sp_34_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$DoubleJump.visible = false

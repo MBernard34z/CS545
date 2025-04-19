@@ -10,6 +10,10 @@ func _ready() -> void:
 			$Difficulty.text = "Medium"
 		"H":
 			$Difficulty.text = "Hard"
+	if Global.save_data.toggleDash:
+		$ToggleDashButton.button_pressed = true
+	else:
+		$ToggleDashButton.button_pressed = false
 
 
 func _on_diff_left_button_pressed() -> void:
@@ -40,3 +44,7 @@ func _on_change_controls_button_pressed() -> void:
 	$"../Click".play()
 	$"../Howto Menu".visible = true
 	$".".visible = false
+
+func _on_toggle_dash_button_toggled(toggled_on: bool) -> void:
+	$"../Click".play()
+	Global.save_data.toggleDash = toggled_on

@@ -29,7 +29,7 @@ size = Vector2(32, 179)
 radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
-size = Vector2(38, 100)
+size = Vector2(146, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy8f0"]
 size = Vector2(11.2, 63.6)
@@ -203,7 +203,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/R1"]
-position = Vector2(2083, 431)
+position = Vector2(2138, 431)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [node name="R2" type="Area2D" parent="Rocks"]
@@ -211,7 +211,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks/R2"]
-position = Vector2(6526, 174)
+position = Vector2(6581, 174)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [node name="Portal" parent="." instance=ExtResource("14_nuasi")]

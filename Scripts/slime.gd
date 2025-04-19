@@ -25,6 +25,9 @@ func _ready():
 		"Slime22", "Slime23", "Slime24", "Slime25", "Slime26":
 			$AnimatedSprite2D.play("blue")
 			move = true
+		"Slime31", "Slime32", "Slime33", "Slime34", "Slime35", "Slime36", "Slime37":
+			$AnimatedSprite2D.play("red")
+			move = true
 		
 
 func _on_body_entered(body: Node2D) -> void:

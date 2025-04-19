@@ -8,6 +8,11 @@ func _ready():
 		$AnimatedSprite2D.flip_h = false
 		await get_tree().create_timer(1.5).timeout
 		$AnimatedSprite2D.play("greenClose")
+	elif name == "PortalPurpleS":
+		$AnimatedSprite2D.play("purple")
+		$AnimatedSprite2D.flip_h = false
+		await get_tree().create_timer(1.5).timeout
+		$AnimatedSprite2D.play("purpleClose")
 	else:
 		$AnimatedSprite2D.play("greenClose")
 
@@ -55,6 +60,6 @@ func _on_p_4_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(2).timeout
 	$"../Transition Screen".play("fade_to_black")
 	await get_tree().create_timer(1).timeout
-	#Global.save_data.checkpoint = 0 #change this!
+	Global.save_data.checkpoint = 10 
 	Global.save()
-	Global.switch_scene("res://Scenes/title_screen.tscn") #change this!
+	Global.switch_scene("res://Scenes/level_3.tscn")

@@ -85,9 +85,18 @@ func _on_punch_button_pressed() -> void:
 
 func hide_unknown_controls():
 	if Global.save_data.progress <= 6:
+		$"HTP Menu 4/DoubleJump Label".text = "????\n????"
+		$"HTP Menu 4/DoubleJump".modulate = Color(0,0,0)
+	if Global.save_data.checkpoint >= 10 and Global.save_data.progress < 6:
 		pass
-	if Global.save_data.progress <= 5:
-		pass
+	elif Global.save_data.progress >= 6:
+		$"HTP Menu 4/Bad".visible = false
+		$"HTP Menu 4/Good".visible = true
+	else:
+		$"HTP Menu 4/Bad/Dont Label".text = "????\n????"
+		$"HTP Menu 4/Bad/Lava1".modulate = Color(0,0,0)
+		$"HTP Menu 4/Bad/Lava2".modulate = Color(0,0,0)
+		$"HTP Menu 4/Bad/Death".modulate = Color(0,0,0)
 	if Global.save_data.progress <= 4:
 		$"HTP Menu 3/WallJump Label".text = "????\n????"
 		$"HTP Menu 3/WallJump".modulate = Color(0,0,0)

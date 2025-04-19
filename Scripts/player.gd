@@ -17,6 +17,8 @@ var onfloor = true
 var dash_speed = 700.0
 var air_resistance = 225.0
 var can_air_dash = false
+var toggleDashCharged = false
+var can_double_jump = true
 
 func _ready():
 	match Global.save_data.difficulty:
@@ -65,17 +67,26 @@ func _physics_process(delta: float) -> void:
 		onfloor = true
 		can_air_dash = false
 	else:
+		can_double_jump = true
 		onfloor = true
 		can_air_dash = false
 
 	var direction := Input.get_axis("left", "right")
 	
 	if Input.is_action_just_pressed("jump"):
-		if (is_on_floor() or not ctimer.is_stopped()) and not punching:
+		if (Global.save_data.progress >= 7 and not is_on_floor() \
+		and can_double_jump and not $WallRays/LeftRay.is_colliding()\
+		and not $WallRays/RightRay.is_colliding()):
+			can_double_jump = false
+			velocity.y = JUMP_VELOCITY
+			$Jump.play()
+		elif (is_on_floor() or not ctimer.is_stopped()) and not punching:
 			velocity.y = JUMP_VELOCITY
 			$Jump.play()
 			anim_state.travel("Jump")
 			can_air_dash = true
+			if toggleDashCharged:
+				toggle_dash()
 		elif Global.save_data.progress >= 5:
 			if $AnimatedSprite2D.flip_h and $WallRays/LeftRay.is_colliding():
 				velocity.y = JUMP_VELOCITY * 0.85
@@ -127,6 +138,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = -dash_speed 
 		velocity.y = JUMP_VELOCITY * 0.4
+	
+	elif Input.is_action_just_pressed("dash") and Global.save_data.progress >= 4\
+	and Global.save_data.toggleDash:
+		toggleDashCharged = true
 		
 	anim_tree.set("parameters/Move/blend_position", direction)
 		
@@ -163,7 +178,7 @@ func hit(from):
 			anim_state.travel("Damage")
 			if from == "from_left":
 				position.x += 25
-			else:
+			elif from == "from_right":
 				position.x -= 25
 			anim_state.travel("Death")
 			await get_tree().create_timer(1.5).timeout
@@ -187,3 +202,19 @@ func hit(from):
 			set_physics_process(true)
 			await get_tree().create_timer(0.25).timeout 
 			iframes = false
+
+func toggle_dash():
+	if can_air_dash:
+		can_air_dash = false
+		toggleDashCharged = false
+		await get_tree().create_timer(0.4).timeout
+		if $AnimatedSprite2D.flip_h == false:
+			velocity.x = dash_speed 
+		else:
+			velocity.x = -dash_speed 
+		velocity.y = JUMP_VELOCITY * 0.4
+		
+func _on_lava_body_entered(_body: Node2D) -> void:
+	if Global.save_data.progress < 6:
+		health = 1
+		hit("none")

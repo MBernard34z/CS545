@@ -145,6 +145,9 @@ func play_character_animations():
 	$"Howto Menu/HTP Menu 2/Fall".play("Fall"+character)
 	$"Howto Menu/HTP Menu 3/AirDash".play("Fall"+character)
 	$"Howto Menu/HTP Menu 3/WallJump".play("Jump"+character)
+	$"Howto Menu/HTP Menu 4/DoubleJump".play("Jump"+character)
+	$"Howto Menu/HTP Menu 4/Bad/Death".play("Death"+character)
+	$"Howto Menu/HTP Menu 4/Good/Idle".play("Idle"+character)
 
 func set_controls():
 	if Global.save_data.controls[0] != null:
@@ -200,14 +203,14 @@ func _on_page_left_button_pressed() -> void:
 	change_page(false)
 	page -= 1
 	if page == 0:
-		page = 3 #change this
+		page = 4
 	change_page(true)
 
 func _on_page_right_button_pressed() -> void:
 	$Click.play()
 	change_page(false)
 	page += 1
-	if page == 4:#change this
+	if page == 5:
 		page = 1
 	change_page(true)
 
@@ -219,6 +222,7 @@ func change_page(make_visible):
 			$"Howto Menu/HTP Menu 2".visible = make_visible
 		3:
 			$"Howto Menu/HTP Menu 3".visible = make_visible
-		#add more here
+		4:
+			$"Howto Menu/HTP Menu 4".visible = make_visible
 	if make_visible:
 		$"Howto Menu/Page Label".text = "Page: " + str(page)
