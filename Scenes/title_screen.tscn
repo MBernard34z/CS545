@@ -1378,60 +1378,71 @@ offset_left = 134.0
 offset_top = 84.0
 offset_right = 1163.0
 offset_bottom = 199.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Project 2D Adventure"
 
 [node name="Start Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 188.0
+offset_left = 184.0
 offset_top = 294.0
 offset_right = 363.0
-offset_bottom = 385.0
+offset_bottom = 388.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "Start"
 
 [node name="CustomCharButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 513.0
-offset_top = 243.0
-offset_right = 807.0
-offset_bottom = 409.0
+offset_left = 500.0
+offset_top = 239.0
+offset_right = 817.0
+offset_bottom = 413.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "Character
 Select"
 
 [node name="HowtoPlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 203.0
+offset_left = 200.0
 offset_top = 446.0
 offset_right = 494.0
-offset_bottom = 609.0
+offset_bottom = 620.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "How to
 Play"
 
 [node name="Settings Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 616.0
-offset_top = 495.0
-offset_right = 857.0
-offset_bottom = 596.0
+offset_left = 606.0
+offset_top = 501.0
+offset_right = 881.0
+offset_bottom = 602.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "Settings"
 
 [node name="Collectables Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 886.0
+offset_left = 868.0
 offset_top = 350.0
-offset_right = 1216.0
+offset_right = 1243.0
 offset_bottom = 465.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "Collectables"
 
 [node name="Settings Menu" type="Control" parent="."]
@@ -1453,6 +1464,7 @@ offset_left = 65.0
 offset_top = 38.0
 offset_right = 1094.0
 offset_bottom = 175.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Settings"
@@ -1464,25 +1476,30 @@ offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="Change Controls Button" type="Button" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 594.0
-offset_right = 517.0
-offset_bottom = 695.0
+offset_left = 115.0
+offset_top = 567.0
+offset_right = 562.0
+offset_bottom = 668.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Change Controls"
 
 [node name="Difficulty Label" type="Label" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 171.0
-offset_right = 443.0
-offset_bottom = 308.0
+offset_left = 775.0
+offset_top = 91.0
+offset_right = 1098.0
+offset_bottom = 228.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Difficulty"
@@ -1490,10 +1507,11 @@ horizontal_alignment = 1
 
 [node name="Difficulty" type="Label" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 120.0
-offset_top = 279.0
-offset_right = 443.0
-offset_bottom = 416.0
+offset_left = 775.0
+offset_top = 210.0
+offset_right = 1098.0
+offset_bottom = 347.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Medium"
@@ -1501,52 +1519,70 @@ horizontal_alignment = 1
 
 [node name="Left Button" type="Button" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 75.0
-offset_top = 253.0
-offset_right = 150.0
-offset_bottom = 398.0
+offset_left = 730.0
+offset_top = 184.0
+offset_right = 805.0
+offset_bottom = 329.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = "<"
 
 [node name="Right Button" type="Button" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 412.0
-offset_top = 253.0
-offset_right = 485.0
-offset_bottom = 398.0
+offset_left = 1067.0
+offset_top = 184.0
+offset_right = 1140.0
+offset_bottom = 329.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = ">"
 
 [node name="ToggleDash Label" type="Label" parent="Settings Menu"]
 layout_mode = 0
 offset_left = 668.0
-offset_top = 407.0
+offset_top = 369.0
 offset_right = 1076.0
-offset_bottom = 544.0
+offset_bottom = 506.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Toggle Dash"
+horizontal_alignment = 1
+
+[node name="TD Label2" type="Label" parent="Settings Menu/ToggleDash Label"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 75.0
+offset_right = 577.0
+offset_bottom = 212.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 30
+text = "Turn on if you are having difficulties
+with the Air Dash powerup"
 horizontal_alignment = 1
 
 [node name="ToggleDashButton" type="CheckButton" parent="Settings Menu"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 1070.0
-offset_top = 404.0
+offset_top = 366.0
 offset_right = 1114.0
-offset_bottom = 435.0
+offset_bottom = 397.0
 scale = Vector2(3, 3)
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cs6hm")
 
 [node name="VolumePC" type="PanelContainer" parent="Settings Menu"]
 layout_mode = 0
-offset_left = 659.0
-offset_top = 59.0
-offset_right = 1192.0
-offset_bottom = 341.0
+offset_left = 69.0
+offset_top = 175.0
+offset_right = 602.0
+offset_bottom = 507.0
 
 [node name="Margins" type="MarginContainer" parent="Settings Menu/VolumePC"]
 layout_mode = 2
@@ -1560,6 +1596,7 @@ layout_mode = 2
 
 [node name="Master Label" type="Label" parent="Settings Menu/VolumePC/Margins/Contents"]
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Master Volume"
@@ -1572,6 +1609,7 @@ bus_name = "Master"
 
 [node name="Music Label" type="Label" parent="Settings Menu/VolumePC/Margins/Contents"]
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Music Volume"
@@ -1584,6 +1622,7 @@ bus_name = "music"
 
 [node name="SFX Label" type="Label" parent="Settings Menu/VolumePC/Margins/Contents"]
 layout_mode = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "SFX Volume"
@@ -1612,6 +1651,7 @@ offset_left = 65.0
 offset_top = 38.0
 offset_right = 1094.0
 offset_bottom = 175.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Character Select"
@@ -1623,43 +1663,51 @@ offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="MaleFemale Button" type="Button" parent="Character Menu"]
 layout_mode = 0
-offset_left = 566.0
+offset_left = 621.0
 offset_top = 455.0
-offset_right = 816.0
+offset_right = 871.0
 offset_bottom = 611.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Change
 Gender"
 
 [node name="Left Button" type="Button" parent="Character Menu"]
 layout_mode = 0
-offset_left = 526.0
+offset_left = 581.0
 offset_top = 256.0
-offset_right = 654.0
+offset_right = 709.0
 offset_bottom = 401.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = "<"
 
 [node name="Right Button" type="Button" parent="Character Menu"]
 layout_mode = 0
-offset_left = 723.0
+offset_left = 778.0
 offset_top = 256.0
-offset_right = 851.0
+offset_right = 906.0
 offset_bottom = 401.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = ">"
 
 [node name="Character" type="AnimatedSprite2D" parent="Character Menu"]
 texture_filter = 1
-position = Vector2(251, 408)
+position = Vector2(306, 408)
 scale = Vector2(15, 15)
 sprite_frames = SubResource("SpriteFrames_afvxu")
 animation = &"M3"
@@ -1684,6 +1732,8 @@ offset_left = 65.0
 offset_top = 38.0
 offset_right = 1094.0
 offset_bottom = 175.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "How to Play"
@@ -1695,37 +1745,61 @@ offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="Page Label" type="Label" parent="Howto Menu"]
 layout_mode = 0
 offset_left = 888.0
-offset_top = 208.0
+offset_top = 226.0
 offset_right = 1211.0
-offset_bottom = 345.0
+offset_bottom = 363.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Page: 1"
 horizontal_alignment = 1
 
+[node name="Change Label" type="Label" parent="Howto Menu"]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 18.0
+offset_right = 1255.0
+offset_bottom = 198.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_p3fck")
+theme_override_font_sizes/font_size = 45
+text = "Click on a control
+and press any key
+to rebind"
+horizontal_alignment = 1
+
 [node name="Left Button" type="Button" parent="Howto Menu"]
 layout_mode = 0
 offset_left = 887.0
-offset_top = 316.0
+offset_top = 334.0
 offset_right = 1015.0
-offset_bottom = 461.0
+offset_bottom = 479.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = "<"
 
 [node name="Right Button" type="Button" parent="Howto Menu"]
 layout_mode = 0
 offset_left = 1084.0
-offset_top = 316.0
+offset_top = 334.0
 offset_right = 1212.0
-offset_bottom = 461.0
+offset_bottom = 479.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 11
 theme_override_font_sizes/font_size = 100
 text = ">"
 
@@ -1740,6 +1814,7 @@ offset_left = 163.0
 offset_top = 409.0
 offset_right = 1192.0
 offset_bottom = 546.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Move"
@@ -1750,6 +1825,7 @@ offset_left = 565.0
 offset_top = 409.0
 offset_right = 1594.0
 offset_bottom = 546.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Jump"
@@ -1777,6 +1853,8 @@ offset_top = 495.0
 offset_right = 230.0
 offset_bottom = 595.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "A"
 
@@ -1787,6 +1865,8 @@ offset_top = 494.0
 offset_right = 381.0
 offset_bottom = 594.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "D"
 
@@ -1797,6 +1877,8 @@ offset_top = 494.0
 offset_right = 708.0
 offset_bottom = 594.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "W"
 
@@ -1812,6 +1894,7 @@ offset_left = 97.0
 offset_top = 441.0
 offset_right = 412.0
 offset_bottom = 600.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Defeat
@@ -1840,6 +1923,7 @@ offset_left = 551.0
 offset_top = 409.0
 offset_right = 1580.0
 offset_bottom = 546.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Punch"
@@ -1859,6 +1943,8 @@ offset_top = 495.0
 offset_right = 709.0
 offset_bottom = 595.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "P"
 
@@ -1872,11 +1958,13 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 124.0
 offset_top = 409.0
-offset_right = 1153.0
+offset_right = 407.0
 offset_bottom = 546.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Air Dash"
+horizontal_alignment = 1
 
 [node name="Lines" type="Sprite2D" parent="Howto Menu/HTP Menu 3"]
 modulate = Color(0, 0, 0, 1)
@@ -1899,6 +1987,8 @@ offset_top = 495.0
 offset_right = 306.0
 offset_bottom = 595.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "L"
 
@@ -1908,6 +1998,7 @@ offset_left = 504.0
 offset_top = 416.0
 offset_right = 819.0
 offset_bottom = 575.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Wall
@@ -1944,6 +2035,7 @@ offset_left = 504.0
 offset_top = 416.0
 offset_right = 819.0
 offset_bottom = 575.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Double
@@ -1969,6 +2061,7 @@ offset_left = 68.0
 offset_top = 416.0
 offset_right = 467.0
 offset_bottom = 575.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Don't Touch
@@ -2004,6 +2097,7 @@ offset_left = 68.0
 offset_top = 416.0
 offset_right = 467.0
 offset_bottom = 575.0
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 60
 text = "Lava is
@@ -2043,6 +2137,7 @@ offset_left = 65.0
 offset_top = 38.0
 offset_right = 1094.0
 offset_bottom = 175.0
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Collectables"
@@ -2054,6 +2149,8 @@ offset_top = 566.0
 offset_right = 1212.0
 offset_bottom = 667.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Back"
 

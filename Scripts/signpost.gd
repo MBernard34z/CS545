@@ -40,10 +40,12 @@ func update_buttons():
 	$Jump/Label2.text = "Jump with ["+jump+"]"
 	$Punch/Label6.text = "Punch rubble\nwith ["+punch+"]"
 	if Global.save_data.toggleDash:
-		$Dash/Label8.text = "Charge an Air Dash with\n["+dash+"], \
-		then press ["+jump+"]\nto Jump & Air Dash"
+		$Dash/Label88.text = "Press ["+dash+"] before jumping,\nthen press \
+		["+jump+"] to\nJump and Air Dash"
+		$Dash/Label88.visible = true
 	else:
 		$Dash/Label8.text = "Air Dash with ["+dash+"]"
+		$Dash/Label8.visible = true
 	$Wall/Label9.text = "Wall jump by repeatedly\npressing ["+jump+"]"
 	$DoubleJump/Label13.text = "Press ["+jump+"] twice\nto Double Jump!"
 	

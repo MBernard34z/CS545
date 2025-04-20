@@ -122,15 +122,28 @@ vertical_alignment = 1
 visible = false
 
 [node name="Label8" type="Label" parent="Dash"]
+visible = false
 offset_left = 462.0
 offset_top = 77.0
 offset_right = 818.0
 offset_bottom = 190.0
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 30
-text = "Charge an Air Dash with 
-[LLL], then press [LLL]
-to Jump & Air Dash"
+text = "Air Dash with [L]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label88" type="Label" parent="Dash"]
+visible = false
+offset_left = 462.0
+offset_top = 77.0
+offset_right = 818.0
+offset_bottom = 190.0
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 27
+text = "Press [LLL] before jumping,
+then press [LLL] to
+Jump and Air Dash"
 horizontal_alignment = 1
 vertical_alignment = 1
 

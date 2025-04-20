@@ -4,12 +4,16 @@ var character
 var page = 1
 
 func _ready():
-	LevelMusic.stop()
 	character = Global.save_data.player
 	set_controls()
 	play_character_animations()
 	call_deferred("set_collectables")
 	$"Transition Screen".play("fade_in")
+	if LevelMusic.volume_db != -7:
+		LevelMusic.volume_db = -7
+		LevelMusic.stream = load("res://Assets/Audio/Music/Title.mp3")
+	if not LevelMusic.playing:
+		LevelMusic.play()
 
 func _on_start_button_pressed() -> void:
 	$Click.play()

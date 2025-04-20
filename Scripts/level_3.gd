@@ -18,8 +18,8 @@ func _ready() -> void:
 	$Player/Camera2D.drag_horizontal_enabled = true
 	$Player/Camera2D.drag_vertical_enabled = true
 	$"Transition Screen".play("fade_in")
-	if LevelMusic.volume_db != -17:
-		LevelMusic.volume_db = -17
+	if LevelMusic.volume_db != -14:
+		LevelMusic.volume_db = -14
 		LevelMusic.stream = load("res://Assets/Audio/Music/Retro Mystic.ogg")
 	if not LevelMusic.playing:
 		LevelMusic.play()
