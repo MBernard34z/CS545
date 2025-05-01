@@ -12,14 +12,16 @@ func _ready() -> void:
 			$Player.position = Vector2(1734, 512)
 		8:
 			$Player.position = Vector2(2848, 480)
+			Global.save_data.progress = 3
 		9:
 			$Player.position = Vector2(4621, 448)
-	await get_tree().create_timer(0.5).timeout 
+			Global.save_data.progress = 4
+	await get_tree().create_timer(0.7).timeout 
 	$Player/Camera2D.drag_horizontal_enabled = true
 	$Player/Camera2D.drag_vertical_enabled = true
 	$"Transition Screen".play("fade_in")
-	if LevelMusic.volume_db != -15:
-		LevelMusic.volume_db = -15
+	if LevelMusic.volume_db != -5:
+		LevelMusic.volume_db = -5
 		LevelMusic.stream = load("res://Assets/Audio/Music/Retro Beat.ogg")
 	if not LevelMusic.playing:
 		LevelMusic.play()

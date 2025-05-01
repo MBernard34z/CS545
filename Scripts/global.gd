@@ -2,7 +2,7 @@ extends Node
 
 #global vars declared here
 var current_scene = null
-var file = "user://save07.save"
+var file = "user://save09.save"
 
 var save_data = {
 	player = "M1",
@@ -12,7 +12,8 @@ var save_data = {
 	volume = [0,0,0],
 	progress = 0,
 	checkpoint = 0,
-	collectables = [[0,0,0], [0,0,0], [0,0,0]]
+	collectables = [[0,0,0], [0,0,0], [0,0,0]],
+	game_beat = false
 }
 #Controls
 #Left

@@ -84,6 +84,8 @@ func _on_punch_button_pressed() -> void:
 		$"HTP Menu 2/Punch Button".text = ""
 
 func hide_unknown_controls():
+	if Global.save_data.game_beat:
+		return
 	if Global.save_data.progress <= 6:
 		$"HTP Menu 4/DoubleJump Label".text = "????\n????"
 		$"HTP Menu 4/DoubleJump".modulate = Color(0,0,0)

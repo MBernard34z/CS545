@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chkjyj8rlky2g"]
 
-[ext_resource type="AudioStream" uid="uid://bfmsycebdhm2t" path="res://Assets/Audio/Music/Title.mp3" id="1_5ofvd"]
+[ext_resource type="AudioStream" uid="uid://b2shs065uy02" path="res://Assets/Audio/Music/Retro Beat.ogg" id="1_5ofvd"]
 
 [node name="LevelMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_5ofvd")

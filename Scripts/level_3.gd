@@ -10,16 +10,18 @@ func _ready() -> void:
 			$Player.position = Vector2(288, 512)
 		11:
 			$Player.position = Vector2(1920, 96)
+			Global.save_data.progress = 5
 		12:
 			$Player.position = Vector2(3342, -64)
 		13:
 			$Player.position = Vector2(4652, 512)
-	await get_tree().create_timer(0.5).timeout 
+			Global.save_data.progress = 6
+	await get_tree().create_timer(0.7).timeout 
 	$Player/Camera2D.drag_horizontal_enabled = true
 	$Player/Camera2D.drag_vertical_enabled = true
 	$"Transition Screen".play("fade_in")
-	if LevelMusic.volume_db != -14:
-		LevelMusic.volume_db = -14
+	if LevelMusic.volume_db != -1:
+		LevelMusic.volume_db = -1
 		LevelMusic.stream = load("res://Assets/Audio/Music/Retro Mystic.ogg")
 	if not LevelMusic.playing:
 		LevelMusic.play()
@@ -64,5 +66,6 @@ func _on_end_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(1).timeout
 	Global.save_data.progress = 0
 	Global.save_data.checkpoint = 0 
+	Global.save_data.game_beat = true
 	Global.save()
 	Global.switch_scene("res://Scenes/credits.tscn")

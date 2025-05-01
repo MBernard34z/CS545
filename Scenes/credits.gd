@@ -34,9 +34,9 @@ func _ready() -> void:
 	anim_state.travel("Death")
 	await get_tree().create_timer(1.5).timeout 
 	$"Transition Screen".play("fade_in")
-	if LevelMusic.volume_db != -18:
-		LevelMusic.volume_db = -18
-		LevelMusic.stream = load("res://Assets/Audio/Music/Retro Beat.ogg")
+	if LevelMusic.volume_db != 0:
+		LevelMusic.volume_db = 0
+		LevelMusic.stream = load("res://Assets/Audio/Music/Title.mp3")
 	if not LevelMusic.playing:
 		LevelMusic.play()
 	await get_tree().create_timer(8).timeout 

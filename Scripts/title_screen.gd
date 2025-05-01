@@ -8,9 +8,12 @@ func _ready():
 	set_controls()
 	play_character_animations()
 	call_deferred("set_collectables")
+	if Global.save_data.game_beat:
+		$"TitlePC/Margins/VBoxContainer/Start Button".visible = false
+		$"TitlePC/Margins/VBoxContainer/Level Button".visible = true
 	$"Transition Screen".play("fade_in")
-	if LevelMusic.volume_db != -7:
-		LevelMusic.volume_db = -7
+	if LevelMusic.volume_db != 0:
+		LevelMusic.volume_db = 0
 		LevelMusic.stream = load("res://Assets/Audio/Music/Title.mp3")
 	if not LevelMusic.playing:
 		LevelMusic.play()
@@ -26,21 +29,46 @@ func _on_start_button_pressed() -> void:
 	else:
 		Global.switch_scene("res://Scenes/level_3.tscn")
 	
+func _on_level_button_pressed() -> void:
+	$Click.play()
+	$TitlePC/Margins/VBoxContainer.add_theme_constant_override("separation", 37)
+	$"TitlePC/Margins/VBoxContainer/Level Button".visible = false
+	$"TitlePC/Margins/VBoxContainer/Settings Button".visible = false
+	$TitlePC/Margins/VBoxContainer/HowtoPlayButton.visible = false
+	$TitlePC/Margins/VBoxContainer/CustomCharButton.visible = false
+	$"TitlePC/Margins/VBoxContainer/Collectables Button".visible = false
+	$TitlePC/Margins/VBoxContainer/Level1B.visible = true
+	$TitlePC/Margins/VBoxContainer/Level2B.visible = true
+	$TitlePC/Margins/VBoxContainer/Level3B.visible = true
+	$TitlePC/Margins/VBoxContainer/LevelBackB.visible = true
+	
 func _on_settings_button_pressed() -> void:
 	$Click.play()
 	$"Settings Menu".visible = true
+	$Title.visible = false
+	$TitlePC.visible = false
+	$MenuPC.visible = true
 	
 func _on_custom_char_button_pressed() -> void:
 	$Click.play()
 	$"Character Menu".visible = true
+	$Title.visible = false
+	$TitlePC.visible = false
+	$MenuPC.visible = true
 	
 func _on_howtoplay_button_pressed() -> void:
 	$Click.play()
 	$"Howto Menu".visible = true
+	$Title.visible = false
+	$TitlePC.visible = false
+	$MenuPC.visible = true
 	
 func _on_collectables_button_pressed() -> void:
 	$Click.play()
 	$"Collectable Menu".visible = true
+	$Title.visible = false
+	$TitlePC.visible = false
+	$MenuPC.visible = true
 
 func _on_back_button_pressed() -> void:
 	$Click.play()
@@ -48,6 +76,9 @@ func _on_back_button_pressed() -> void:
 	$"Howto Menu".visible = false
 	$"Character Menu".visible = false
 	$"Collectable Menu".visible = false
+	$MenuPC.visible = false
+	$TitlePC.visible = true
+	$Title.visible = true
 	Global.save_data.volume = \
 	[AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")),
 	AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music")),
@@ -230,3 +261,41 @@ func change_page(make_visible):
 			$"Howto Menu/HTP Menu 4".visible = make_visible
 	if make_visible:
 		$"Howto Menu/Page Label".text = "Page: " + str(page)
+
+
+func _on_level_back_b_pressed() -> void:
+	$Click.play()
+	$TitlePC/Margins/VBoxContainer.add_theme_constant_override("separation", 10)
+	$"TitlePC/Margins/VBoxContainer/Level Button".visible = true
+	$"TitlePC/Margins/VBoxContainer/Settings Button".visible = true
+	$TitlePC/Margins/VBoxContainer/HowtoPlayButton.visible = true
+	$TitlePC/Margins/VBoxContainer/CustomCharButton.visible = true
+	$"TitlePC/Margins/VBoxContainer/Collectables Button".visible = true
+	$TitlePC/Margins/VBoxContainer/Level1B.visible = false
+	$TitlePC/Margins/VBoxContainer/Level2B.visible = false
+	$TitlePC/Margins/VBoxContainer/Level3B.visible = false
+	$TitlePC/Margins/VBoxContainer/LevelBackB.visible = false
+	
+func _on_level_1b_pressed() -> void:
+	$Click.play()
+	$"Transition Screen".play("fade_to_black")
+	Global.save_data.progress = 0
+	Global.save_data.checkpoint = 0
+	await get_tree().create_timer(1).timeout
+	Global.switch_scene("res://Scenes/level_1.tscn")
+
+func _on_level_2b_pressed() -> void:
+	$Click.play()
+	$"Transition Screen".play("fade_to_black")
+	Global.save_data.progress = 3
+	Global.save_data.checkpoint = 6
+	await get_tree().create_timer(1).timeout
+	Global.switch_scene("res://Scenes/level_2.tscn")
+
+func _on_level_3b_pressed() -> void:
+	$Click.play()
+	$"Transition Screen".play("fade_to_black")
+	Global.save_data.progress = 5
+	Global.save_data.checkpoint = 10
+	await get_tree().create_timer(1).timeout
+	Global.switch_scene("res://Scenes/level_3.tscn")

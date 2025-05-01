@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=3 uid="uid://bvh4tf5rbipfx"]
+[gd_scene load_steps=252 format=4 uid="uid://bvh4tf5rbipfx"]
 
 [ext_resource type="Shader" uid="uid://dyjm1ob81ucks" path="res://Addons/accesibilitytools/shaders/tritanopia_shader.gdshader" id="1_2qqkf"]
 [ext_resource type="Script" uid="uid://raocbm7w4f2d" path="res://Scripts/title_screen.gd" id="1_klylv"]
@@ -6,11 +6,15 @@
 [ext_resource type="AudioStream" uid="uid://cbbawsv8rfykk" path="res://Assets/Audio/Effects/UI/click.ogg" id="2_s0wjx"]
 [ext_resource type="Texture2D" uid="uid://c5kd475hwnkyy" path="res://Assets/Player/F1/Character1F_3_idle_0.png" id="3_2aetq"]
 [ext_resource type="Texture2D" uid="uid://dqmgxabjtnoef" path="res://Assets/Player/F1/Character1F_3_idle_1.png" id="4_4j2le"]
+[ext_resource type="Texture2D" uid="uid://bg0pt1rl0kc80" path="res://Assets/Levels/Forest/Background_2.png" id="4_b7e7f"]
 [ext_resource type="Script" uid="uid://bx74ovu86knc7" path="res://Scripts/settings_menu.gd" id="4_lgoij"]
 [ext_resource type="Texture2D" uid="uid://cqxeggd1wg2c0" path="res://Assets/Player/F1/Character1F_3_idle_2.png" id="5_q71se"]
+[ext_resource type="Texture2D" uid="uid://cyx1lqpxn1vt7" path="res://Assets/Levels/Forest/Background_1.png" id="5_yqka6"]
 [ext_resource type="PackedScene" uid="uid://d2b6qfnexjddd" path="res://Scenes/volume_slider.tscn" id="5_yyyt4"]
+[ext_resource type="TileSet" uid="uid://dnxgj6shv4kpp" path="res://Extras/forestTilemap.tres" id="6_q6e2l"]
 [ext_resource type="Texture2D" uid="uid://bfn1lrny74hod" path="res://Assets/Player/F1/Character1F_3_idle_3.png" id="6_s0wjx"]
 [ext_resource type="Texture2D" uid="uid://bex3twh3vgocq" path="res://Assets/Player/F1/Character1F_3_idle_4.png" id="7_3gx0d"]
+[ext_resource type="Texture2D" uid="uid://dahbx70fvlo6v" path="res://Assets/Slimes/Comun_slime.png" id="7_yqka6"]
 [ext_resource type="Texture2D" uid="uid://b363jfvivc4c3" path="res://Assets/Player/F1/Character1F_3_idle_5.png" id="8_6xkn5"]
 [ext_resource type="Texture2D" uid="uid://drq4ofe2368bn" path="res://Assets/Player/F1/Character1F_3_idle_6.png" id="9_6il8m"]
 [ext_resource type="Texture2D" uid="uid://b2i8gc5unx522" path="res://Assets/Player/F1/Character1F_3_idle_7.png" id="10_4nb1b"]
@@ -240,6 +244,31 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_362on"]
 shader = ExtResource("1_2qqkf")
 shader_parameter/type = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6e2l"]
+atlas = ExtResource("7_yqka6")
+region = Rect2(0, 0, 36, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwee1"]
+atlas = ExtResource("7_yqka6")
+region = Rect2(36, 0, 36, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cus0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6e2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwee1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqka6"]
+bg_color = Color(0, 0, 0, 0.321569)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs6hm"]
 
@@ -1366,84 +1395,188 @@ stream = ExtResource("2_s0wjx")
 volume_db = -15.0
 bus = &"sfx"
 
-[node name="Title Background" type="ColorRect" parent="."]
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="Sky" type="Parallax2D" parent="TileMap"]
+scroll_scale = Vector2(0.1, 0)
+scroll_offset = Vector2(-613, 309)
+repeat_size = Vector2(1240, 0)
+autoscroll = Vector2(-2, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Sky"]
+position = Vector2(280, 5.99999)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_b7e7f")
+
+[node name="Sky2" type="Parallax2D" parent="TileMap"]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-510.2, 309)
+repeat_size = Vector2(1240, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap/Sky2"]
+position = Vector2(280, 5.99999)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_yqka6")
+
+[node name="Main" type="TileMapLayer" parent="TileMap"]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("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AAAEABMAAAADAAAAAAAEABQAAAADAAMAAAAEABUAAAADAAUAAAAEABYAAAADAAcAAAAFABMAAAADAAAAAAAFABQAAAADAAMAAAAFABUAAAAEAAUAAAAFABYAAAAEAAYAAAAGABMAAAADAAAAAAAGABQAAAADAAMAAAAGABUAAAADAAMAAAAGABYAAAAFAAYAAAAHABMAAAADAAAAAAAHABQAAAADAAMAAAAHABUAAAADAAMAAAAHABYAAAADAAUAAAAIABMAAAADAAAAAAAIABQAAAALAAIAAAAIABUAAAADAAMAAAAIABYAAAAEAAUAAAAJABMAAAADAAAAAAAJABQAAAADAAMAAAAJABUAAAADAAMAAAAJABYAAAACAAUAAAAKABMAAAADAAAAAAAKABQAAAADAAMAAAAKABUAAAADAAMAAAAKABYAAAADAAUAAAALABMAAAADAAAAAAALABQAAAADAAMAAAALABUAAAACAAUAAAALABYAAAACAAYAAAAMABMAAAADAAAAAAAMABQAAAADAAMAAAAMABUAAAADAAUAAAAMABYAAAADAAcAAAANABMAAAADAAAAAAANABQAAAADAAMAAAANABUAAAADAAUAAAANABYAAAADAAcAAAAOABMAAAADAAAAAAAOABQAAAADAAMAAAAOABUAAAADAAUAAAAOABYAAAADAAcAAAAPABMAAAADAAAAAAAPABQAAAADAAMAAAAPABUAAAADAAUAAAAPABYAAAADAAcAAAAQABIAAAAOAAAAAAAQABMAAAADAAAAAAAQABQAAAADAAMAAAAQABUAAAADAAUAAAAQABYAAAADAAcAAAARABIAAAANAAAAAAARABMAAAADAAAAAAARABQAAAADAAMAAAARABUAAAADAAUAAAARABYAAAADAAcAAAASABMAAAADAAAAAAASABQAAAADAAMAAAASABUAAAAEAAUAAAASABYAAAAEAAYAAAATABMAAAADAAAAAAATABQAAAADAAMAAAATABUAAAADAAMAAAATABYAAAADAAUAAAAUABMAAAADAAAAAAAUABQAAAADAAMAAAAUABUAAAADAAMAAAAUABYAAAADAAUAAAAVABMAAAADAAAAAAAVABQAAAADAAMAAAAVABUAAAADAAMAAAAVABYAAAADAAUAAAAWABMAAAADAAAAAAAWABQAAAADAAMAAAAWABUAAAADAAMAAAAWABYAAAADAAUAAAAXABMAAAADAAAAAAAXABQAAAADAAMAAAAXABUAAAACAAUAAAAXABYAAAACAAYAAAAYABMAAAADAAAAAAAYABQAAAADAAMAAAAYABUAAAADAAUAAAAYABYAAAADAAcAAAAZABMAAAADAAAAAAAZABQAAAADAAMAAAAZABUAAAADAAUAAAAZABYAAAADAAcAAAAaABIAAAANAAAAAAAaABMAAAADAAAAAAAaABQAAAADAAMAAAAaABUAAAADAAUAAAAaABYAAAADAAcAAAAbABMAAAADAAAAAAAbABQAAAADAAMAAAAbABUAAAAEAAUAAAAbABYAAAAEAAYAAAAcABMAAAADAAAAAAAcABQAAAADAAMAAAAcABUAAAADAAMAAAAcABYAAAADAAUAAAAdABMAAAADAAAAAAAdABQAAAADAAMAAAAdABUAAAACAAUAAAAdABYAAAACAAYAAAAeABEAAAACAAAAAAAeABIAAAABAAIAAAAeABMAAAACAAEAAAAeABQAAAADAAMAAAAeABUAAAADAAUAAAAeABYAAAADAAcAAAAfABEAAAADAAAAAAAfABIAAAADAAMAAAAfABMAAAADAAMAAAAfABQAAAACAAUAAAAfABUAAAACAAYAAAAfABYAAAADAAcAAAAgABEAAAADAAAAAAAgABIAAAADAAMAAAAgABMAAAADAAMAAAAgABQAAAADAAUAAAAgABUAAAADAAcAAAAgABYAAAADAAcAAAAhABEAAAADAAAAAAAhABIAAAALAAIAAAAhABMAAAADAAMAAAAhABQAAAADAAUAAAAhABUAAAADAAcAAAAhABYAAAADAAcAAAAiABEAAAADAAAAAAAiABIAAAADAAMAAAAiABMAAAADAAIAAAAiABQAAAADAAUAAAAiABUAAAAEAAYAAAAiABYAAAADAAcAAAAjABEAAAADAAAAAAAjABIAAAADAAMAAAAjABMAAAADAAMAAAAjABQAAAADAAUAAAAjABUAAAAFAAYAAAAjABYAAAAEAAYAAAAkABEAAAAEAAAAAAAkABIAAAAFAAIAAAAkABMAAAAFAAIAAAAkABQAAAAEAAEAAAAkABUAAAADAAEAAAAkABYAAAAFAAYAAAAlABQAAAADAAAAAAAlABUAAAADAAEAAAAlABYAAAADAAEAAAAmABMAAAANAAAAAAAmABQAAAADAAAAAAAmABUAAAADAAEAAAAmABYAAAADAAEAAAAnABQAAAADAAAAAAAnABUAAAADAAEAAAAnABYAAAADAAEAAAACAAwAAAAEAAMAAAACAA0AAAAFAAIAAAACAA4AAAAFAAIAAAABABAAAAAFAAIAAAABABEAAAAFAAIAAAACAA8AAAAFAAMAAAAAABIAAAADAAMAAAAAABEAAAADAAMAAAAAABAAAAADAAMAAAAAAA8AAAADAAMAAAAAAA4AAAADAAMAAAABAA4AAAADAAMAAAABAA8AAAAEAAMAAAABAA0AAAADAAIAAAAAAA0AAAADAAMAAAAAAAwAAAADAAMAAAABAAwAAAADAAMAAAABAAsAAAADAAMAAAAAAAsAAAADAAMAAAADAAcAAAADAAAAAAADAAgAAAADAAMAAAADAAkAAAADAAIAAAADAAoAAAADAAMAAAAEAAcAAAADAAAAAAAEAAgAAAADAAMAAAAEAAkAAAADAAMAAAAEAAoAAAADAAMAAAAFAAcAAAADAAAAAAAFAAgAAAADAAMAAAAFAAkAAAADAAMAAAAFAAoAAAAEAAMAAAAGAAcAAAADAAAAAAAGAAgAAAAEAAIAAAAGAAkAAAAFAAIAAAAGAAoAAAAEAAQAAAAHAAcAAAAFAAEAAAAHAAgAAAAFAAMAAAAEAAsAAAADAAQAAAADAAsAAAADAAMAAAACAAsAAAADAAMAAAAFAAsAAAAEAAQAAAACAAcAAAADAAAAAAABAAcAAAADAAAAAAAAAAcAAAADAAAAAAACAAoAAAADAAMAAAABAAoAAAADAAIAAAAAAAoAAAADAAMAAAAAAAkAAAADAAMAAAAAAAgAAAADAAMAAAABAAgAAAADAAMAAAABAAkAAAADAAMAAAACAAkAAAADAAIAAAACAAgAAAADAAMAAAADAAwAAAAFAAMAAAAHABEAAAARAAAAAAAHABIAAAARAAEAAAAGABEAAAAQAAAAAAAGABIAAAAQAAEAAAAKABIAAAAPAAIAAAAJABIAAAAOAAIAAAAhAA8AAAAJABEAAAAhABAAAAAJABIAAAAiAA8AAAAKABEAAAAiABAAAAAKABIAAAAhAA0AAAAJABEAAAAhAA4AAAAJABIAAAAiAA0AAAAKABEAAAAiAA4AAAAKABIAAAAhAAsAAAAJABEAAAAhAAwAAAAJABIAAAAiAAsAAAAKABEAAAAiAAwAAAAKABIAAAAhAAkAAAAJABEAAAAhAAoAAAAJABIAAAAiAAkAAAAKABEAAAAiAAoAAAAKABIAAAA=")
+tile_set = ExtResource("6_q6e2l")
+
+[node name="Extras" type="TileMapLayer" parent="TileMap"]
+texture_filter = 1
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAwAAwAAAALAAoAAAAfAAYAAAABABAAAAAfAAcAAAABABEAAAAfAAgAAAABABEAAAAgAAUAAAACAA8AAAAgAAYAAAACABAAAAAgAAcAAAACABEAAAAgAAgAAAACABEAAAAgAAkAAAACABIAAAAhAAUAAAADAA8AAAAhAAYAAAADABAAAAAhAAcAAAADABEAAAAhAAgAAAADABEAAAAhAAkAAAADABIAAAAiAAUAAAADAA8AAAAiAAYAAAADABAAAAAiAAcAAAADABEAAAAiAAgAAAADABEAAAAiAAkAAAADABIAAAAjAAUAAAAEAA8AAAAjAAYAAAAEABAAAAAjAAcAAAAEABEAAAAjAAgAAAAEABEAAAAjAAkAAAAEABIAAAAkAAYAAAAFABAAAAAkAAcAAAAFABEAAAAkAAgAAAAFABEAAAAfAAkAAAABABIAAAAgAAoAAAACABMAAAAhAAoAAAADABMAAAAiAAoAAAADABMAAAAjAAoAAAAEABMAAAAkAAkAAAAFABIAAAA=")
+tile_set = ExtResource("6_q6e2l")
+
+[node name="Slime" type="AnimatedSprite2D" parent="TileMap"]
+texture_filter = 1
+position = Vector2(127, 212)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cus0g")
+autoplay = "default"
+
+[node name="Slime2" type="AnimatedSprite2D" parent="TileMap"]
+texture_filter = 1
+position = Vector2(931, 596)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cus0g")
+autoplay = "default"
+flip_h = true
+
+[node name="Slime3" type="AnimatedSprite2D" parent="TileMap"]
+texture_filter = 1
+position = Vector2(159, 596)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cus0g")
+autoplay = "default"
+
+[node name="TitlePC" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.313726, 0.513726, 0.282353, 1)
+offset_left = 387.0
+offset_top = 157.0
+offset_right = 893.0
+offset_bottom = 592.0
+
+[node name="Margins" type="MarginContainer" parent="TitlePC"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitlePC/Margins"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Start Button" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Start"
+
+[node name="Level Button" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Level Select"
+
+[node name="Settings Button" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Settings"
+
+[node name="HowtoPlayButton" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "How to Play"
+
+[node name="CustomCharButton" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Character Select"
+
+[node name="Collectables Button" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Collectables"
+
+[node name="Level1B" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Level 1"
+
+[node name="Level2B" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Level 2"
+
+[node name="Level3B" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Level 3"
+
+[node name="LevelBackB" type="Button" parent="TitlePC/Margins/VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 45
+text = "Back"
+
+[node name="MenuPC" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1255.0
+offset_bottom = 695.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqka6")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 134.0
-offset_top = 84.0
+offset_top = 39.0
 offset_right = 1163.0
-offset_bottom = 199.0
+offset_bottom = 154.0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_p3fck")
 theme_override_font_sizes/font_size = 80
 text = "Project 2D Adventure"
-
-[node name="Start Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 184.0
-offset_top = 294.0
-offset_right = 363.0
-offset_bottom = 388.0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 60
-text = "Start"
-
-[node name="CustomCharButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 239.0
-offset_right = 817.0
-offset_bottom = 413.0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 60
-text = "Character
-Select"
-
-[node name="HowtoPlayButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 446.0
-offset_right = 494.0
-offset_bottom = 620.0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 60
-text = "How to
-Play"
-
-[node name="Settings Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 606.0
-offset_top = 501.0
-offset_right = 881.0
-offset_bottom = 602.0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 60
-text = "Settings"
-
-[node name="Collectables Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 868.0
-offset_top = 350.0
-offset_right = 1243.0
-offset_bottom = 465.0
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 60
-text = "Collectables"
 
 [node name="Settings Menu" type="Control" parent="."]
 visible = false
@@ -1453,6 +1586,7 @@ offset_bottom = 40.0
 script = ExtResource("4_lgoij")
 
 [node name="Settings Background" type="ColorRect" parent="Settings Menu"]
+visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -1640,6 +1774,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Character Background" type="ColorRect" parent="Character Menu"]
+visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -1721,6 +1856,7 @@ offset_bottom = 40.0
 script = ExtResource("52_1ihm4")
 
 [node name="Howto Background" type="ColorRect" parent="Howto Menu"]
+visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -1766,9 +1902,9 @@ horizontal_alignment = 1
 [node name="Change Label" type="Label" parent="Howto Menu"]
 layout_mode = 0
 offset_left = 649.0
-offset_top = 18.0
+offset_top = 48.0
 offset_right = 1255.0
-offset_bottom = 198.0
+offset_bottom = 228.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
 theme_override_constants/outline_size = 5
@@ -2126,6 +2262,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Collectable Background" type="ColorRect" parent="Collectable Menu"]
+visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -2209,11 +2346,16 @@ visible = false
 
 [node name="Shader" parent="." instance=ExtResource("233_362on")]
 
-[connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CustomCharButton" to="." method="_on_custom_char_button_pressed"]
-[connection signal="pressed" from="HowtoPlayButton" to="." method="_on_howtoplay_button_pressed"]
-[connection signal="pressed" from="Settings Button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Collectables Button" to="." method="_on_collectables_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Level Button" to="." method="_on_level_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/HowtoPlayButton" to="." method="_on_howtoplay_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/CustomCharButton" to="." method="_on_custom_char_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Collectables Button" to="." method="_on_collectables_button_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Level1B" to="." method="_on_level_1b_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Level2B" to="." method="_on_level_2b_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/Level3B" to="." method="_on_level_3b_pressed"]
+[connection signal="pressed" from="TitlePC/Margins/VBoxContainer/LevelBackB" to="." method="_on_level_back_b_pressed"]
 [connection signal="pressed" from="Settings Menu/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Change Controls Button" to="Settings Menu" method="_on_change_controls_button_pressed"]
 [connection signal="pressed" from="Settings Menu/Left Button" to="Settings Menu" method="_on_diff_left_button_pressed"]

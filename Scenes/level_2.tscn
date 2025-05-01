@@ -105,7 +105,7 @@ tile_map_data = PackedByteArray("AAAhAAAAHQAAAAAAAAA=")
 tile_set = ExtResource("4_bl0du")
 
 [node name="Player" parent="." instance=ExtResource("7_c5xoi")]
-position = Vector2(248, 505)
+position = Vector2(3589, 220)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -39)
@@ -150,12 +150,11 @@ shape = SubResource("RectangleShape2D_evi0p")
 
 [node name="Collect" type="AudioStreamPlayer" parent="Collectables"]
 stream = ExtResource("9_4k5rq")
-volume_db = -9.0
+volume_db = -2.0
 bus = &"sfx"
 
 [node name="Eat" type="AudioStreamPlayer" parent="Collectables"]
 stream = ExtResource("10_5jii6")
-volume_db = -8.0
 pitch_scale = 1.1
 bus = &"sfx"
 
@@ -196,7 +195,7 @@ texture = ExtResource("12_hj5x7")
 
 [node name="Smash" type="AudioStreamPlayer" parent="Rocks"]
 stream = ExtResource("13_kjoi8")
-volume_db = -16.0
+volume_db = -8.0
 bus = &"sfx"
 
 [node name="R1" type="Area2D" parent="Rocks"]
@@ -243,6 +242,7 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Jump" type="AudioStreamPlayer" parent="Enemies"]
 stream = ExtResource("15_kwf64")
+volume_db = 10.0
 pitch_scale = 1.5
 bus = &"sfx"
 

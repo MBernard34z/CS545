@@ -59,4 +59,3 @@ void fragment() {
 	outputColor = srgbtorgb(outputColor);
 	COLOR.rgb = outputColor;
 }
- 

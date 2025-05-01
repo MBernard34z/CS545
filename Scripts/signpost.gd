@@ -44,7 +44,7 @@ func update_buttons():
 		["+jump+"] to\nJump and Air Dash"
 		$Dash/Label88.visible = true
 	else:
-		$Dash/Label8.text = "Air Dash with ["+dash+"]"
+		$Dash/Label8.text = "Jump with ["+jump+"], then\nAir Dash with ["+dash+"]"
 		$Dash/Label8.visible = true
 	$Wall/Label9.text = "Wall jump by repeatedly\npressing ["+jump+"]"
 	$DoubleJump/Label13.text = "Press ["+jump+"] twice\nto Double Jump!"
@@ -177,3 +177,12 @@ func _on_sp_34_body_entered(_body: Node2D) -> void:
 func _on_sp_34_body_exited(_body: Node2D) -> void:
 	$TextureRect.visible = false
 	$DoubleJump.visible = false
+
+
+func _on_sp_17_body_entered(_body: Node2D) -> void:
+	$TextureRect.visible = true
+	$Escape.visible = true
+
+func _on_sp_17_body_exited(_body: Node2D) -> void:
+	$TextureRect.visible = false
+	$Escape.visible = false

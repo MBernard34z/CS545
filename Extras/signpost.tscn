@@ -129,7 +129,8 @@ offset_right = 818.0
 offset_bottom = 190.0
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 30
-text = "Air Dash with [L]"
+text = "Jump with [W], then
+Air Dash with [L]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -218,6 +219,21 @@ theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 30
 text = "Press [LLL] twice
 to Double Jump!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Escape" type="Node2D" parent="."]
+visible = false
+
+[node name="Label14" type="Label" parent="Escape"]
+offset_left = 462.0
+offset_top = 77.0
+offset_right = 818.0
+offset_bottom = 190.0
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 30
+text = "Press [esc] to Save
+and Return to Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
